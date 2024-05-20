@@ -1,0 +1,36 @@
+doctype html
+html 
+    head
+        title #{title}
+
+        meta(name='viewport',  content='width=device-width, initial-scale=1')
+        link(rel='icon',       href='/favicon.png' type='image/png')
+        link(rel='stylesheet', href='/css/styles.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
+    body
+        nav
+            ul
+                li
+                    a
+                        .img-container
+                            img.img-sidebar(src='/gestion_productos.png' alt='Logo de la página')
+                            span.text-logo ProdManagement &nbsp;
+                            i.material-symbols-outlined arrow_drop_down
+        #sidebar
+            ul.sidebar-list
+                li.sidebar-category            
+                    a.sidebar-element(href='/')
+                        .sidebar-element-container               
+                            i.img-sidebar-element.material-symbols-outlined home
+                            span.sidebar-category-text &nbsp;Inicio
+                li.sidebar-category 
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container   
+                            i.img-sidebar-element.material-symbols-outlined account_circle 
+                            span.sidebar-category-text &nbsp;Iniciar Sesión
+                li.sidebar-category 
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container   
+                            i.img-sidebar-element.material-symbols-outlined logout
+                            span.sidebar-category-text &nbsp;Cerrar Sesión 
+        block content

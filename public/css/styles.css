@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Geologica:wght@100..900&display=swap');
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+*{
+    margin: 0;
+    padding: 0  ;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color:rgba(116, 115, 115, 0.1);
+}
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+nav {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #353333;
+    padding: 0;
+    user-select: none;
+    font-size: 20px;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+nav ul li a {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: auto 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+nav ul li a:hover {
+    background-color: rgb(93, 93, 93, 0.4);
+    cursor: pointer;
+}
+  
+i {
+    margin-top: -2px;
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-sidebar{
+    width: 65px;
+    height: auto;
+    vertical-align: middle;
+    background-color: aliceblue;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    padding: 0 5px 0 0;
+}
+.text-logo{
+    margin-left: 12px;
+    font-family: "Geologica", sans-serif;
+}
+
+#sidebar{
+    position: fixed;
+    width: 310px;
+    height: 100%;
+    background-color: aliceblue;
+    border-right: 2px solid rgb(100, 100, 100, .3);
+}
+.sidebar-list .sidebar-category{
+    padding: 25px 5px;
+}
+.sidebar-element{
+    color: #353333;
+    text-decoration: none;
+}
+.sidebar-element:hover{
+    color: #275bf6;
+}
+.sidebar-element-container{
+    margin-left: 5px;
+    display: flex;
+    justify-content: start;
+    text-align: center;
+}
+.img-sidebar-element{
+    font-size: 35px !important;
+}
+.sidebar-category-text{
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.container-main{
+    padding: 20px 25px;
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+}

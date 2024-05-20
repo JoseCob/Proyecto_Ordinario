@@ -1,0 +1,22 @@
+{
+  "name": "proyecto_ordinario",
+  "version": "1.0.0",
+  "description": "Proyecto ordinario que va destinado a un sistema web de gestión de colecciones de productos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+
+  "keywords": [],
+  "author": "Jose Cob",
+  "license": "ISC",
+
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "3.9.7",
+    "passport": "0.7.0",
+    "passport-local": "1.0.0",
+    "pug": "3.0.2",
+    "sass": "1.77.2"
+  }
+}
