@@ -15,22 +15,44 @@ html
                         .img-container
                             img.img-sidebar(src='/gestion_productos.png' alt='Logo de la página')
                             span.text-logo ProdManagement &nbsp;
-                            i.material-symbols-outlined arrow_drop_down
+                            i.icon.material-symbols-outlined arrow_drop_down
         #sidebar
             ul.sidebar-list
+                li.sidebar-category            
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container
+                            i.img-sidebar-element.material-symbols-outlined account_circle 
+                            span.sidebar-category-text &nbsp;¡Hola, identifícate!
+                hr
                 li.sidebar-category            
                     a.sidebar-element(href='/')
                         .sidebar-element-container               
                             i.img-sidebar-element.material-symbols-outlined home
                             span.sidebar-category-text &nbsp;Inicio
+                li.sidebar-category            
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container               
+                            i.img-sidebar-element.material-symbols-outlined cards
+                            span.sidebar-category-text &nbsp;Ver colección
+                hr
                 li.sidebar-category 
                     a.sidebar-element(href='#')
-                        .sidebar-element-container   
-                            i.img-sidebar-element.material-symbols-outlined account_circle 
-                            span.sidebar-category-text &nbsp;Iniciar Sesión
-                li.sidebar-category 
-                    a.sidebar-element(href='#')
-                        .sidebar-element-container   
+                        .sidebar-element-container.btnLogout   
                             i.img-sidebar-element.material-symbols-outlined logout
                             span.sidebar-category-text &nbsp;Cerrar Sesión 
+                hr
+
+            script.
+                const btnImgContainer = document.querySelector('.img-container'); //selecciona la clase del sidebar
+                const icon = btnImgContainer.querySelector('.icon'); //Selecciona la clase para cambiar el icono de flecha hacia abajo del navbar
+
+                btnImgContainer.addEventListener('click', function(){
+                    document.getElementById('sidebar').classList.toggle('active'); //Muestra y oculta el sidebar cuando se hace click
+                    //Si la constante icon se hace click con la constante btnImgContainer, cambia el icono de flecha hacia abajo -> hacia arriba
+                    if (icon.textContent === 'arrow_drop_down') {
+                        icon.textContent = 'arrow_drop_up'; //Flecha abajo
+                    } else {
+                        icon.textContent = 'arrow_drop_down'; //Flecha arriba
+                    }
+                });
         block content
