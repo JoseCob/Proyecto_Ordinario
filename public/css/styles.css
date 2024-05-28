@@ -1,29 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Geologica:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 
 .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-*{
-    margin: 0;
-    padding: 0  ;
+* {
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    width: 100vw;
     height: 100vh;
-    position: relative;
-    background-color:rgba(105, 86, 86, 0.1);
+    background-color: rgba(105, 86, 86, 0.1);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    font-family:'Times New Roman', Times, serif;
-    font-weight: 500;
+hr{
+    border: none;
+    height: 1px;
+    background-color: #272727;
 }
 
 nav {
+    position: fixed; /* Se cambio a fixed para mantener el navbar siempre visible */
+    top: 0;
+    width: 100%;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +38,7 @@ nav {
     padding: 0;
     user-select: none;
     font-size: 20px;
+    z-index: 2; /* Asegura que el navbar esté por encima del sidebar */
 }
 nav ul {
     display: flex;
@@ -57,12 +63,12 @@ nav ul li a {
 i {
     margin-top: -2px;
 }
-.img-container{
+.img-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.img-sidebar{
+.img-sidebar {
     width: 65px;
     height: auto;
     vertical-align: middle;
@@ -73,57 +79,368 @@ i {
     border-bottom-right-radius: 18px;
     padding: 0 5px 0 0;
 }
-.text-logo{
+.text-logo {
     margin-left: 12px;
     font-family: "Geologica", sans-serif;
 }
 
-#sidebar{
-    position: fixed;
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed; /* Cambiado a fixed para mantener el sidebar siempre visible */
+    top: 70px;/*Altura del navbar*/
     width: 305px;
-    height: 100%;
+    height: calc(100% - 70px); /* Asegura que el sidebar ocupe el resto de la ventana menos la altura del navbar */
     background-color: white;
-    left: -305px;
+    left: -310px;
     transition: all 250ms ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    overflow: auto;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+    overflow-y: auto;
+    z-index: 1; /* Asegura que el sidebar esté por encima del contenido pero debajo del navbar */
+    user-select: none;
 }
-#sidebar.active{
+#sidebar.active {
     left: 0;
 }
-.sidebar-list .sidebar-category{
+.sidebar-list {
+    margin-left: -40px;
+}
+.sidebar-list .sidebar-category {
     list-style: none;
     margin-left: 10px;
     padding: 25px 0;
 }
-.sidebar-element{
+.sidebar-element {
     color: #272727;
     text-decoration: none;
 }
-.sidebar-element:hover{
-    color: #0097DD;
+.sidebar-element:hover {
+    color: #1951d3;
 }
-.sidebar-element-container{
+.sidebar-element-container {
     display: flex;
     text-align: center;
 }
-.img-sidebar-element{
+.img-sidebar-element {
     font-size: 35px !important;
 }
-.sidebar-category-text{
+.sidebar-category-text {
     margin-top: 5px;
     font-size: 22px;
 }
-.btnLogout:not(.sidebar) {
-    color: rgb(255, 0, 0);
+.sidebar-footer{
+    list-style: none;
 }
-.btnLogout:hover{
+.btnLogout {
+    color: rgb(255, 0, 0);
+    padding: 20px;
+}
+.btnLogout:hover {
     color: rgba(131, 11, 11, 0.888);
 }
 
-.container-main{
-    padding: 20px 25px;
-    margin-top: 30px;
+.container-main {
+    padding: 35px 30px;
+    margin-top: 70px;
     background-color: #fff;
     border-radius: 15px;
+    flex-grow: 1; /* Añadido para permitir que el contenido principal ocupe el espacio restante */
+    transition: margin-left 250ms ease; /* Añadir transición suave para el margen izquierdo */
+}
+
+.title-main{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    color:#e60303;
+    font-weight: 600;
+    font-family: "Shippori Antique B1", sans-serif;
+    font-style: normal;
+}
+.container-welcome{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row-container-welcome{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    background-color: rgba(227, 226, 226, 0.3);
+}
+.container-left, .container-right {
+    width: 500px;
+    height: auto; 
+    padding: auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    align-items: center;
+    margin: 0;
+    font-size: 22px;
+}
+.title-container-welcome {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #272727;
+    margin: 15px;
+    font-size: 26px;
+}
+.text-container-welcome{
+    margin-top: -10px;
+    padding: 35px;
+    font-style: italic;
+    font-weight: 400;
+}
+.container-left {
+    margin-right: 20px;
+}
+.container-right {
+    margin-left: 20px;
+}
+.subText-container-welcome{
+    margin-top: -70px;
+    padding: 35px;
+    font-style: italic;
+    font-weight: 400;
+}
+.menu-welcome{
+    padding: 35px;
+    margin-top: -75px;
+    float: left;
+    width: 100%;
+    margin-left: 40px;
+    font-style: italic;
+    font-weight: 400;
+}
+.menu-welcome li{
+    color:#e60303;
+    font-family: "Geologica", sans-serif;
+    font-style: normal;
+}
+.menu-welcome a{
+    text-decoration:underline;
+    line-height: 1.8;
+    color: black;
+    font-size: 20px;
+}
+.menu-welcome a:hover{
+    color: #1951d3;
+}
+
+.cover-image-login{
+    background-image: url('/gestion-empresarial.webp');
+    background-repeat:no-repeat;
+    background-size:cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: auto;
+}
+.img-login-header{
+    user-select: none;
+    pointer-events: none;
+    background-color: white;
+    padding: 6px;
+    border-radius: 80px;
+    width: 150px;
+    height: auto;
+    transform: translate(150%, -54%);
+}
+.container-login{
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 12px;
+    width: 600px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.container-login-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.page-mark-login{
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "Geologica", sans-serif;
+    transform: translate(0%, -220%);
+    margin-bottom: 10px;
+}
+.line-page-login{
+    margin: 20px 0 -20px 100px;
+    border: none;
+    height: 3px;
+    background-color: #1951d3;
+    width: 65%;
+}
+.welcome-login{
+    margin-top: -50px;
+    color: white;
+    font-weight: 900;
+    font-size: 36px;
+    font-family: "Geologica", sans-serif;
+}
+.title-login{
+    margin-top: -5px;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 26px;
+    margin-bottom: 35px;
+    font-family: "Shippori Antique B1", sans-serif;
+}
+.container-body-login{
+    padding: 0 80px 40px 80px;
+}
+.login-text{
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+.input-icon-loginRow{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.login-icon{
+    user-select: none;
+    margin-top: 0;
+    font-size: 50px !important;
+    background-color: rgb(202, 198, 198);
+}
+.login-input{
+    width: 100%;
+    padding: 13.5px;
+    border-left: none;
+    font-size: 20px;
+    border: none;
+}
+/*Quita el revelador de contraseñas de microsoft edge*/
+::-ms-reveal {
+    display: none;
+}
+.login-btn{
+    margin-top: 10px;
+    width: 100%;
+    background-color: #1951d3;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+}
+.login-btn:hover{
+    cursor: pointer;
+    background-color: hwb(222 0% 1% / 0.575);
+}
+.footer-login{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.text-content{
+    color: white;
+}
+.suggesting-link{
+    margin-left: 8px;
+    border-bottom: 1px solid rgb(0, 213, 255);
+    color: rgb(0, 213, 255);
+}
+.suggesting-link:hover {
+    color: #0095ff;
+    border-bottom-color: #0095ff;
+  }
+  
+.suggesting-link-text{
+    color: white;
+    margin-left: 8px;
+}
+
+/*responsive para celulares*/
+@media only screen and (max-width: 767px) {
+    nav{
+        padding: 0;
+    }
+    i {
+        margin-top: 0;
+    }
+    .img-arrow-navbar{
+        margin-left: -5px;
+    }
+    .img-sidebar {
+        width: 55px;
+    }
+    .text-logo{
+        font-size: 1rem;
+    }
+
+    #sidebar{
+        width: 245px;
+        box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
+    }
+    .img-sidebar-element {
+        font-size: 25px !important;
+    }
+    .sidebar-category-text {
+        margin-top: 5px;
+        font-size: 1.2rem;
+    }
+
+    .title-main{
+        font-size: 1.2rem;
+    }
+    .container-welcome{
+        padding: auto;
+    }
+    .row-container-welcome{
+        margin-top: -50px;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+    }
+    .container-left, .container-right {
+        width: auto;
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+    .title-container-welcome{
+        font-size: 1.1rem;
+    }
+    .text-container-welcome{
+        padding: 20px;
+    }
+    .subText-container-welcome{
+        padding: 20px;
+        margin-top: -40px;
+    }
+    .menu-welcome{
+        margin-top: -50px;
+        width: auto;
+        margin-left: 0;
+
+    }
+    .menu-welcome a{
+        font-size: 1rem;
+        line-height: 2.8;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width:1024px){
+
 }

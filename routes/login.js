@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Ruta para llamar el inicio de la página
 router.get('/', (req, res) => {
-    res.render('index', {title: '¡Bienvenido a ProdManagement!'});
+    res.render('login', {title: 'Inicia Sesión con tu cuenta'});
 });
 
 module.exports = router

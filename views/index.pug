@@ -1,7 +1,22 @@
 extends header
 
 block content
-    .container-main
-        h1 #{title}
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo voluptatem maiores officia aperiam neque minima, tenetur laudantium voluptate, aut illum quae, a soluta consequatur eaque. A sequi voluptates minima vitae non magnam accusantium deleniti? Assumenda, debitis! Provident harum ut eaque, vel maiores libero aperiam reiciendis, accusantium possimus ex nisi aut consectetur voluptas deleniti voluptatem praesentium totam in id vero? Nemo earum explicabo odio ex molestias tempore hic, illo iusto quia harum, iure ad veniam, dolores quisquam rerum labore? Expedita nam perferendis a corporis alias eos iusto adipisci eligendi sed ipsam, suscipit, voluptatum aliquam recusandae tenetur iure quidem sit voluptatem eius?
+    h1.title-main #{title}
+    
+    .container-welcome
+        .row-container-welcome
+            .container-left
+                h2.title-container-welcome ¿Qué es ProdManagement?
+                p.text-container-welcome ProdManagement es un software de gestión o administración de colecciones de productos, en donde usted tendra el control total sobre sus productos y ver la información de una manera más organizada y detallada posible, para facilitar el manejo de una gran cantidad de información que abarque sobre sus categorias de productos que desea administrar en la app, la cual le otorgamos la posibilidad de poder subir imagenes como portada para identificar sus productos y con la posibilidad de administrar financieramente el producto que esta añadiendo a la colección.
+            .container-right
+                h2.title-container-welcome ¿Qué características ofrecemos?
+                p.text-container-welcome La app ofrece la posibilidad de crear colecciones de los productos que usted necesite administrar, puede agregar una gran variedad de productos y personalizar las categorias a su gusto, al igual que ofrecemos la posibilidad de agregar costos y evaluar el valor total en existencia sobre el producto que se esta añadiendo en la app, si usted lo desea.
+                P.subText-container-welcome La aplicación contiene las siguientes herramientas en la interfaz del menú:
+                
+                ol(class='menu-welcome') 
+                    li 
+                        a(href='#') Crear Colecciones
+                    li
+                        a(href='#') Administrar colecciones (Ver colecciones)
+                    li 
+                        a(href='#') Ver estadisticas sobre los productos

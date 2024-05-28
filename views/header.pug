@@ -8,18 +8,18 @@ html
         link(rel='stylesheet', href='/css/styles.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
     body
-        nav
+        nav 
             ul
                 li
                     a
                         .img-container
                             img.img-sidebar(src='/gestion_productos.png' alt='Logo de la página')
                             span.text-logo ProdManagement &nbsp;
-                            i.icon.material-symbols-outlined arrow_drop_down
+                            i.img-arrow-navbar.icon.material-symbols-outlined arrow_drop_down
         #sidebar
             ul.sidebar-list
                 li.sidebar-category            
-                    a.sidebar-element(href='#')
+                    a.sidebar-element(href='/login')
                         .sidebar-element-container
                             i.img-sidebar-element.material-symbols-outlined account_circle 
                             span.sidebar-category-text &nbsp;¡Hola, identifícate!
@@ -32,27 +32,60 @@ html
                 li.sidebar-category            
                     a.sidebar-element(href='#')
                         .sidebar-element-container               
+                            i.img-sidebar-element.material-symbols-outlined category
+                            span.sidebar-category-text &nbsp;Crear Colección
+                li.sidebar-category            
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container               
                             i.img-sidebar-element.material-symbols-outlined cards
-                            span.sidebar-category-text &nbsp;Ver colección
+                            span.sidebar-category-text &nbsp;Ver Colecciones
+                li.sidebar-category            
+                    a.sidebar-element(href='#')
+                        .sidebar-element-container               
+                            i.img-sidebar-element.material-symbols-outlined bar_chart_4_bars 
+                            span.sidebar-category-text &nbsp;Estadisticas
+            .sidebar-footer
                 hr
                 li.sidebar-category 
                     a.sidebar-element(href='#')
                         .sidebar-element-container.btnLogout   
                             i.img-sidebar-element.material-symbols-outlined logout
                             span.sidebar-category-text &nbsp;Cerrar Sesión 
-                hr
-
-            script.
-                const btnImgContainer = document.querySelector('.img-container'); //selecciona la clase del sidebar
-                const icon = btnImgContainer.querySelector('.icon'); //Selecciona la clase para cambiar el icono de flecha hacia abajo del navbar
-
-                btnImgContainer.addEventListener('click', function(){
-                    document.getElementById('sidebar').classList.toggle('active'); //Muestra y oculta el sidebar cuando se hace click
-                    //Si la constante icon se hace click con la constante btnImgContainer, cambia el icono de flecha hacia abajo -> hacia arriba
-                    if (icon.textContent === 'arrow_drop_down') {
-                        icon.textContent = 'arrow_drop_up'; //Flecha abajo
-                    } else {
-                        icon.textContent = 'arrow_drop_down'; //Flecha arriba
-                    }
-                });
+    .container-main
         block content
+        
+    script.
+        const btnImgContainer = document.querySelector('.img-container'); // Selecciona la clase del sidebar
+        const icon = btnImgContainer.querySelector('.icon'); // Selecciona la clase para cambiar el icono de flecha hacia abajo del navbar
+        const containerMain = document.querySelector('.container-main'); // Selecciona el contenedor principal
+        const sidebar = document.getElementById('sidebar'); // Selecciona el sidebar
+
+        function adjustMargin() {
+            if (sidebar.classList.contains('active')) {
+                if (window.matchMedia("(max-width: 767px)").matches) {
+                    containerMain.style.marginLeft = '245px'; // Desplaza el contenido hacia la derecha en pantallas pequeñas
+                } else {
+                    containerMain.style.marginLeft = '305px'; // Desplaza el contenido hacia la derecha en pantallas grandes
+                }
+            } else {
+                containerMain.style.marginLeft = '0'; // Restablece el margen
+            }
+        }
+
+        btnImgContainer.addEventListener('click', function(){
+            sidebar.classList.toggle('active'); // Muestra y oculta el sidebar cuando se hace click
+            // Si la constante icon se hace click con la constante btnImgContainer, cambia el icono de flecha hacia abajo -> hacia arriba
+            if (icon.textContent === 'arrow_drop_down') {
+                icon.textContent = 'arrow_drop_up'; // Flecha abajo
+            } else {
+                icon.textContent = 'arrow_drop_down'; // Flecha arriba
+            }
+            // Ajusta el margen izquierdo del contenido principal
+            adjustMargin();
+        });
+
+        // Ajusta el margen izquierdo del contenido principal al cargar la página
+        adjustMargin();
+
+        // Ajusta el margen izquierdo del contenido principal cuando la ventana cambia de tamaño ya sea cuando pasa a media screen o pantalla completa
+        window.addEventListener('resize', adjustMargin);
