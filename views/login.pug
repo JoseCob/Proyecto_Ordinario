@@ -8,7 +8,7 @@ html
         link(rel='stylesheet', href='/css/styles.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
     
-    body.cover-image-login
+    body.cover-login
         .container-login
             img(src='/favicon.png' class='img-login-header')
             .container-login-header
@@ -17,17 +17,17 @@ html
                 h2.welcome-login Bienvenido de nuevo
                 h3.title-login #{title}
 
-            form(actions='#' method='POST')
+            form(action='/login' method='POST')
                 .container-body-login
                     label(for='user' class='login-text') Usuario
                     .input-icon-loginRow
                         i.material-symbols-outlined(class='login-icon') person
-                        input(type='text' name='user' id='user' class='login-input' placeholder='Agregar usuario' autofocus, required)
+                        input(type='text' name='user' id='user' class='form-input' placeholder='Agregar usuario' autofocus, required)
                     
                     label(for='password' class='login-text') Contraseña
                     .input-icon-loginRow
                         i.material-symbols-outlined(class='login-icon') vpn_key
-                        input(type='password' name='password' id='password' class='login-input' placeholder='Agregar contraseña' autocomplete='off', required)
+                        input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off', required)
                     
                     button(type='submit' class='login-btn') Iniciar Sesión
                 hr.line-page-login

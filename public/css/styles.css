@@ -237,10 +237,11 @@ i {
     color: #1951d3;
 }
 
-.cover-image-login{
+.cover-login{
     background-image: url('/gestion-empresarial.webp');
     background-repeat:no-repeat;
     background-size:cover;
+    background-attachment: fixed;/*asegura que la imagen cubra todo el fondo sin que se repita o se salga del borde de la pantalla*/
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -259,6 +260,7 @@ i {
 .container-login{
     background-color: rgba(0, 0, 0, 0.50);
     border-radius: 12px;
+    max-width: 100%;
     width: 600px;
     position: absolute;
     top: 10%;
@@ -315,6 +317,7 @@ i {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 25px;
+    border: 1px solid #1951d3;
 }
 .login-icon{
     user-select: none;
@@ -322,16 +325,23 @@ i {
     font-size: 50px !important;
     background-color: rgb(202, 198, 198);
 }
-.login-input{
+.form-input{
     width: 100%;
     padding: 13.5px;
-    border-left: none;
     font-size: 20px;
-    border: none;
+    border: 1px solid #1951d3;
+    border-left: none;
 }
-/*Quita el revelador de contraseñas de microsoft edge*/
+/*Quita el revelador de contraseñas de microsoft edge para el input type = 'password'*/
 ::-ms-reveal {
     display: none;
+}
+input:hover, input:focus, input:active, input:focus-visible {
+    border: 1px solid #1951d3;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #1951d3;
+    border-left: none;
 }
 .login-btn{
     margin-top: 10px;
@@ -365,8 +375,7 @@ i {
 .suggesting-link:hover {
     color: #0095ff;
     border-bottom-color: #0095ff;
-  }
-  
+}
 .suggesting-link-text{
     color: white;
     margin-left: 8px;
@@ -438,6 +447,53 @@ i {
     .menu-welcome a{
         font-size: 1rem;
         line-height: 2.8;
+    }
+
+    /*login*/
+    .img-login-header{
+        width: calc(30% - 10px);
+        transform: translate(132%, -54%);
+    }
+    .container-login{
+        width: 90%;
+        transform: translate(-50%, 2%);
+    }
+    .page-mark-login{
+        font-size: 24px;
+        width: calc(100% - 0px);
+    }
+    .line-page-login{
+        margin: 0;
+        width: calc(60% - 0px);
+        transform: translate(35%, 450%);
+    }
+    .welcome-login{
+       font-size: 1.5rem;
+    }
+    .title-login{
+        font-size: 1.1rem;
+    }
+    .container-body-login{
+        padding: 0 40px 20px 40px;
+    }
+    .login-text{
+        font-size: 1.1rem;
+    }
+    .login-icon{
+        font-size: 35px !important;
+    }
+    .form-input{
+        width: 100%;
+        padding: 8.5px;
+        font-size: 1rem;
+    }
+    .login-btn{
+        font-size: 1.1rem;
+        padding: 8px;
+    }
+    .footer-login{
+        margin-top: 15px;
+        font-size: 1rem;
     }
 }
 
