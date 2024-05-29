@@ -303,6 +303,21 @@ i {
     margin-bottom: 35px;
     font-family: "Shippori Antique B1", sans-serif;
 }
+.container-message-error{
+  display: flex;
+  justify-content: center;
+  text-align: center;  
+}
+.message-login-error{
+    font-size: 22px;
+    margin-top: -10px;
+    color: #e60303;
+    width: 100%;
+    max-width: 80%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
 .container-body-login{
     padding: 0 80px 40px 80px;
 }
@@ -495,7 +510,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     }
     .container-form{
         width: 90%;
-        transform: translate(-50%, 2%);
+        transform: translate(-50%, 0%);
     }
     .page-mark-login{
         font-size: 24px;
@@ -511,6 +526,12 @@ input:hover, input:focus, input:active, input:focus-visible {
     }
     .title-login{
         font-size: 1.1rem;
+    }
+    .message-login-error{
+        font-size: 1rem;
+        width: 100%;
+        max-width: 80%;
+        padding: 5px;
     }
     .container-body-login{
         padding: 0 40px 20px 40px;
@@ -535,7 +556,7 @@ input:hover, input:focus, input:active, input:focus-visible {
         font-size: 1rem;
     }
 
-    /*login*/
+    /*register*/
     .title-register{
         font-size: 1.8rem;
     }
@@ -547,6 +568,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     }
     .form-input-register{
         font-size: 1.1rem;
+        padding: 6px;
     }
 }
 

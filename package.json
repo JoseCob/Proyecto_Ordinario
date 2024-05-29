@@ -4,19 +4,27 @@
   "description": "Proyecto ordinario que va destinado a un sistema web de gestión de colecciones de productos",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
-
   "keywords": [],
   "author": "Jose Cob",
   "license": "ISC",
-
   "dependencies": {
+    "bcrypt": "5.1.1",
+    "buffer": "6.0.3",
+    "connect-flash": "0.1.1",
+    "cookie-parser": "1.4.6",
+    "dotenv": "16.4.5",
     "express": "^4.19.2",
-    "mysql2": "3.9.7",
+    "express-session": "1.18.0",
+    "jsonwebtoken": "9.0.2",
+    "mysql2": "^3.9.7",
     "passport": "0.7.0",
     "passport-local": "1.0.0",
-    "pug": "3.0.2",
+    "pug": "^3.0.3",
     "sass": "1.77.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
   }
 }

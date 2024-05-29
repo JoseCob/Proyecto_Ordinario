@@ -16,18 +16,22 @@ html
                     hr.line-page-form
                 h2.welcome-login Bienvenido de nuevo
                 h3.title-login #{title}
+                if messages
+                    each message in messages
+                        .container-message-error
+                            p.message-login-error #{message}
 
             form(action='/login' method='POST')
                 .container-body-login
-                    label(for='user' class='login-text') Usuario
+                    label(for='userName' class='login-text') Usuario
                     .input-icon-loginRow
                         i.material-symbols-outlined(class='login-icon') person
-                        input(type='text' name='user' id='user' class='form-input' placeholder='Agregar usuario' autofocus, required)
+                        input(type='text' name='userName' id='userName' class='form-input' placeholder='Agregar usuario' autofocus)
                     
                     label(for='password' class='login-text') Contraseña
                     .input-icon-loginRow
                         i.material-symbols-outlined(class='login-icon') vpn_key
-                        input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off', required)
+                        input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off')
                     
                     button(type='submit' class='btn-form') Iniciar Sesión
                 hr.line-page-form
