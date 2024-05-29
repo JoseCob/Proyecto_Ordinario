@@ -8,12 +8,12 @@ html
         link(rel='stylesheet', href='/css/styles.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
     
-    body.cover-login
-        .container-login
+    body.cover-form
+        .container-form
             img(src='/favicon.png' class='img-login-header')
-            .container-login-header
+            .container-form-header
                 h1.page-mark-login ProdManagement
-                    hr.line-page-login
+                    hr.line-page-form
                 h2.welcome-login Bienvenido de nuevo
                 h3.title-login #{title}
 
@@ -29,9 +29,9 @@ html
                         i.material-symbols-outlined(class='login-icon') vpn_key
                         input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off', required)
                     
-                    button(type='submit' class='login-btn') Iniciar Sesión
-                hr.line-page-login
-                .footer-login
+                    button(type='submit' class='btn-form') Iniciar Sesión
+                hr.line-page-form
+                .footer-form
                     p.text-content ¿No tienes cuenta?
                     a(href='/register' class='suggesting-link') Registrarse
                     p(class='suggesting-link-text') aqui

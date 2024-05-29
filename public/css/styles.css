@@ -237,7 +237,7 @@ i {
     color: #1951d3;
 }
 
-.cover-login{
+.cover-form{
     background-image: url('/gestion-empresarial.webp');
     background-repeat:no-repeat;
     background-size:cover;
@@ -257,7 +257,7 @@ i {
     height: auto;
     transform: translate(150%, -54%);
 }
-.container-login{
+.container-form{
     background-color: rgba(0, 0, 0, 0.50);
     border-radius: 12px;
     max-width: 100%;
@@ -267,7 +267,7 @@ i {
     left: 50%;
     transform: translate(-50%, 0%);
 }
-.container-login-header{
+.container-form-header{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -281,7 +281,7 @@ i {
     transform: translate(0%, -220%);
     margin-bottom: 10px;
 }
-.line-page-login{
+.line-page-form{
     margin: 20px 0 -20px 100px;
     border: none;
     height: 3px;
@@ -343,7 +343,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     outline-color: #1951d3;
     border-left: none;
 }
-.login-btn{
+.btn-form{
     margin-top: 10px;
     width: 100%;
     background-color: #1951d3;
@@ -353,11 +353,11 @@ input:hover, input:focus, input:active, input:focus-visible {
     border: none;
     font-size: 24px;
 }
-.login-btn:hover{
+.btn-form:hover{
     cursor: pointer;
     background-color: hwb(222 0% 1% / 0.575);
 }
-.footer-login{
+.footer-form{
     margin-top: 25px;
     display: flex;
     justify-content: center;
@@ -379,6 +379,45 @@ input:hover, input:focus, input:active, input:focus-visible {
 .suggesting-link-text{
     color: white;
     margin-left: 8px;
+}
+
+/*Registro*/
+.title-register{
+    margin-top: 25px;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 35px;
+    margin-bottom: -2px;
+    font-family: "Shippori Antique B1", sans-serif;
+}
+.welcome-register{
+    margin-top: 40px;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: "Geologica", sans-serif;
+}
+.container-form-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    padding: 0 40px 20px 40px;
+}
+.form-label-register{
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+.form-input-register{
+    padding: 12px;
+    border: 1px solid #1951d3;
+    font-size: 20px;
+    border-left: none;
+}
+.btnRegister{
+    margin-top: 40px !important;
 }
 
 /*responsive para celulares*/
@@ -454,7 +493,7 @@ input:hover, input:focus, input:active, input:focus-visible {
         width: calc(30% - 10px);
         transform: translate(132%, -54%);
     }
-    .container-login{
+    .container-form{
         width: 90%;
         transform: translate(-50%, 2%);
     }
@@ -462,7 +501,7 @@ input:hover, input:focus, input:active, input:focus-visible {
         font-size: 24px;
         width: calc(100% - 0px);
     }
-    .line-page-login{
+    .line-page-form{
         margin: 0;
         width: calc(60% - 0px);
         transform: translate(35%, 450%);
@@ -487,13 +526,27 @@ input:hover, input:focus, input:active, input:focus-visible {
         padding: 8.5px;
         font-size: 1rem;
     }
-    .login-btn{
+    .btn-form{
         font-size: 1.1rem;
         padding: 8px;
     }
-    .footer-login{
+    .footer-form{
         margin-top: 15px;
         font-size: 1rem;
+    }
+
+    /*login*/
+    .title-register{
+        font-size: 1.8rem;
+    }
+    .welcome-register{
+        font-size: 1.4rem;
+    }
+    .form-label-register{
+        font-size: 1.2rem;
+    }
+    .form-input-register{
+        font-size: 1.1rem;
     }
 }
 

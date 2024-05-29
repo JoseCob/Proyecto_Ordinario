@@ -8,38 +8,39 @@ html
         link(rel='stylesheet', href='/css/styles.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
     
-    body.cover-login
-        .container-login
-            .container-login-header
-                h2.title-login #{title}
-                h1.welcome-login registrate para acceder a ProdManagement
+    body.cover-form
+        .container-form
+            .container-form-header
+                h2.title-register #{title}
+                hr.line-page-form
+                h1.welcome-register Registrate para acceder a ProdManagement
 
             form(action='/register-user' method='POST')
-                .container-body-login
-                    label(for='nameUser' class='login-text') Nombre de pila
-                    input(type='text' name='nameUser' id='nameUser' class='form-input' placeholder='Agregar nombre' autofocus, required)
+                .container-form-register
+                    label(for='nameUser' class='form-label-register') Nombre de pila
+                    input(type='text' name='nameUser' id='nameUser' class='form-input-register' placeholder='Agregar nombre' autofocus, required)
 
-                    label(for='Surname' class='login-text') Primer Apellido
-                    input(type='text' name='Surname' id='Surname' class='form-input' placeholder='Agregar primer apellido', required)
+                    label(for='Surname' class='form-label-register') Primer Apellido
+                    input(type='text' name='Surname' id='Surname' class='form-input-register' placeholder='Agregar primer apellido', required)
                     
-                    label(for='secondSurname' class='login-text') Segundo Apellido
-                    input(type='text' name='secondSurname' id='secondSurname' class='form-input' placeholder='Agregar segundo apellido')
+                    label(for='secondSurname' class='form-label-register') Segundo Apellido
+                    input(type='text' name='secondSurname' id='secondSurname' class='form-input-register' placeholder='Agregar segundo apellido')
 
-                    label(for='userName' class='login-text') Nombre de usuario
-                    input(type='text' name='userName' id='userName' class='form-input' placeholder='Agregar nombre de usuario', required)
+                    label(for='userName' class='form-label-register') Nombre de usuario
+                    input(type='text' name='userName' id='userName' class='form-input-register' placeholder='Agregar nombre de usuario', required)
 
-                    label(for='email' class='login-text') Correo
-                    input(type='email' name='email' id='email' class='form-input' placeholder='Agregar correo electrónico', required)
+                    label(for='email' class='form-label-register') Correo
+                    input(type='email' name='email' id='email' class='form-input-register' placeholder='Agregar correo electrónico', required)
 
-                    label(for='password' class='login-text') Contraseña
-                    input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off', required)
+                    label(for='password' class='form-label-register') Contraseña
+                    input(type='password' name='password' id='password' class='form-input-register' placeholder='Agregar contraseña' autocomplete='off', required)
 
-                    label(for='confirmPassword' class='login-text') Confirmar contraseña
-                    input(type='password' name='confirmPassword' id='confirmPassword' class='form-input' placeholder='Confirma la contraseña' autocomplete='off', required)
+                    label(for='confirmPassword' class='form-label-register') Confirmar contraseña
+                    input(type='password' name='confirmPassword' id='confirmPassword' class='form-input-register' placeholder='Confirma la contraseña' autocomplete='off', required)
                     
-                    button(type='submit' class='login-btn') Registrarce
-                hr.line-page-login
-                .footer-login
+                    button(type='submit' class='btn-form btnRegister') Registrarse
+                hr.line-page-form
+                .footer-form
                     p.text-content ¿Ya tienes cuenta?
                     a(href='/login' class='suggesting-link') Iniciar sesión
                     p(class='suggesting-link-text') aqui
