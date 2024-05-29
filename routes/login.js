@@ -18,18 +18,28 @@ function validateLoginInput(req, res, next) {
 
 //Ruta que llama el login de la página
 router.get('/', (req, res) => {
-    // Obtener los mensajes de error de la solicitud
     const messages = req.flash('error');
     res.render('login', {title: 'Inicia Sesión con tu cuenta', messages: messages});
 });
 
-router.post('/',validateLoginInput, passport.authenticate('local', {
-    successRedirect: '/', //Ruta después del inicio de sesión con éxito
-    failureRedirect: '/login', //Ruta que dirige al login, si el intento del inicio de sesión fallo
-    failureFlash: true //Almacena un mensaje de error mediante el connect-flash
-}), async (req, res) => {
-    const token = authMiddleware.generateToken(req.user.id);
-    res.cookie('token', token, { httpOnly: true, secure: false});
+router.post('/', validateLoginInput, (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            req.flash('error', info.message || 'Credenciales inválidas'); //Usa el mensaje de error de la estrategia local
+            return res.redirect('/login');
+        }
+        req.logIn(user, async (err) => {
+            if (err) {
+                return next(err);
+            }
+            const token = authMiddleware.generateToken(user.id);
+            res.cookie('token', token, { httpOnly: true, secure: false });
+            return res.redirect('/');
+        });
+    })(req, res, next);
 });
 
-module.exports = router
+module.exports = router;

@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
     res.render('index', {title: '¡Bienvenido a ProdManagement!'});
 });
 
-module.exports = router
+module.exports = router;

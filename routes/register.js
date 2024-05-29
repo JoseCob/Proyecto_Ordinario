@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
     res.render('register', {title: 'Registro'});
 });
 
-module.exports = router
+module.exports = router;

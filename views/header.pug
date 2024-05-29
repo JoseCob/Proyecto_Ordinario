@@ -19,7 +19,7 @@ html
         #sidebar
             ul.sidebar-list
                 li.sidebar-category            
-                    a.sidebar-element(href='/login')
+                    a.sidebar-element.user-sidebar
                         .sidebar-element-container
                             i.img-sidebar-element.material-symbols-outlined account_circle 
                             span.sidebar-category-text &nbsp;¡Hola, identifícate!
@@ -63,7 +63,7 @@ html
         function adjustMargin() {
             if (sidebar.classList.contains('active')) {
                 if (window.matchMedia("(max-width: 767px)").matches) {
-                    containerMain.style.marginLeft = '245px'; // Desplaza el contenido hacia la derecha en pantallas pequeñas
+                    containerMain.style.marginLeft = '190px'; // Desplaza el contenido hacia la derecha en pantallas pequeñas
                 } else {
                     containerMain.style.marginLeft = '305px'; // Desplaza el contenido hacia la derecha en pantallas grandes
                 }

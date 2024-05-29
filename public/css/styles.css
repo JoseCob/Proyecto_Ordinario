@@ -55,7 +55,6 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: auto 10px;
     border-radius: 10px;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -112,11 +111,14 @@ i {
     margin-left: 10px;
     padding: 25px 0;
 }
-.sidebar-element {
+.sidebar-element{
     color: #272727;
     text-decoration: none;
 }
-.sidebar-element:hover {
+.user-sidebar{
+    color: #1951d3;
+}
+.sidebar-element:not(.user-sidebar):hover {
     color: #1951d3;
 }
 .sidebar-element-container {
@@ -443,30 +445,36 @@ input:hover, input:focus, input:active, input:focus-visible {
     i {
         margin-top: 0;
     }
+    .img-container{
+        margin-left: -10px;
+    }
     .img-arrow-navbar{
-        margin-left: -5px;
+        margin-left: -8px;
     }
     .img-sidebar {
-        width: 55px;
+        width: 50px;
     }
     .text-logo{
-        font-size: 1rem;
+        font-size: 0.82rem;
+        margin-left: 5px;
     }
 
     #sidebar{
-        width: 245px;
+        width: 190px;
         box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
+        top: 60px;
+        height: calc(100% - 60px);
     }
     .img-sidebar-element {
         font-size: 25px !important;
     }
     .sidebar-category-text {
         margin-top: 5px;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .title-main{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     .container-welcome{
         padding: auto;
@@ -479,17 +487,17 @@ input:hover, input:focus, input:active, input:focus-visible {
     }
     .container-left, .container-right {
         width: auto;
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin: 10px 0;
     }
     .title-container-welcome{
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
     .text-container-welcome{
-        padding: 20px;
+        padding: 18px;
     }
     .subText-container-welcome{
-        padding: 20px;
+        padding: 18px;
         margin-top: -40px;
     }
     .menu-welcome{
@@ -499,7 +507,7 @@ input:hover, input:focus, input:active, input:focus-visible {
 
     }
     .menu-welcome a{
-        font-size: 1rem;
+        font-size: 0.8rem;
         line-height: 2.8;
     }
 
