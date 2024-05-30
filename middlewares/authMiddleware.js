@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken'); //Dependencia para el token
 const bcrypt = require('bcrypt'); //Dependencia para generar contraseñas hash "cifrado Blowfish"
 const dotenv = require('dotenv'); //cargar variables de entorno desde un archivo ".env"
+const users = require('../database/tables/users');//Llama la tabla de usuarios del MySQL
 
 //Configura dotenv para cargar las variables de entorno desde un archivo ".env"
 dotenv.config();
@@ -18,12 +19,17 @@ async function authenticate(req, res, next){
     try{
         //constante que verifica el token usando la clave secreta = 'ACCESS_TOKEN_SECRET'
         const decoded = jwt.verify(token, process.env.SESSION_SECRET); // esta constante esta codificando el token secreto (clave secreta) con la clave "SESSION_SECRET" del .env
-
         //Almacena el ID del usuario en la solicitud para su posterior uso
         req.userId = decoded.userId;
 
-        next();
-
+        // Cargar el usuario desde la base de datos
+        if (!req.user) {
+            const user = await users.getIdUser(req.userId);
+            if(user){
+                req.user = user;
+            }
+        }
+        next(); //pasa al siguiente Middleware de autenticación
     } catch (err) {
         //si hay un error en la verificación del token, redirige al usuario al login}
         return res.redirect('/login'); 

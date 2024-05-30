@@ -22,7 +22,7 @@ html
                     a.sidebar-element.user-sidebar
                         .sidebar-element-container
                             i.img-sidebar-element.material-symbols-outlined account_circle 
-                            span.sidebar-category-text &nbsp;¡Hola, identifícate!
+                            span.sidebar-category-text &nbsp;¡Hola, #{firstName} #{firstSurname}!
                 hr
                 li.sidebar-category            
                     a.sidebar-element(href='/')
@@ -30,20 +30,25 @@ html
                             i.img-sidebar-element.material-symbols-outlined home
                             span.sidebar-category-text &nbsp;Inicio
                 li.sidebar-category            
-                    a.sidebar-element(href='#')
+                    a.sidebar-element(href='/crtCollection')
                         .sidebar-element-container               
                             i.img-sidebar-element.material-symbols-outlined category
                             span.sidebar-category-text &nbsp;Crear Colección
                 li.sidebar-category            
-                    a.sidebar-element(href='#')
+                    a.sidebar-element(href='/seeCollections')
                         .sidebar-element-container               
                             i.img-sidebar-element.material-symbols-outlined cards
                             span.sidebar-category-text &nbsp;Ver Colecciones
                 li.sidebar-category            
-                    a.sidebar-element(href='#')
+                    a.sidebar-element(href='/addCollection')
                         .sidebar-element-container               
-                            i.img-sidebar-element.material-symbols-outlined bar_chart_4_bars 
-                            span.sidebar-category-text &nbsp;Estadisticas
+                            i.img-sidebar-element.material-symbols-outlined cards
+                            span.sidebar-category-text &nbsp;Hola Vista 3
+                li.sidebar-category            
+                    a.sidebar-element(href='/lookCollection')
+                        .sidebar-element-container               
+                            i.img-sidebar-element.material-symbols-outlined cards
+                            span.sidebar-category-text &nbsp;Hola Vista 4
             .sidebar-footer
                 hr
                 li.sidebar-category 

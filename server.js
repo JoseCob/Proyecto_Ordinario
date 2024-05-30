@@ -34,7 +34,6 @@ app.use(passport.session()); //Esto permite que Passport recuerde la autenticaci
 
 //Llamamos a initializeConnection para establecer la conexión de las consultas de la base de datos de MySQL
 users.initializeConnection();
-
 //Configuracion del LocalStrategy de autenticación local
 passport.use(new LocalStrategy({
     //Se define los campos userName y password para autenticar los usuarios de la vista login.pug
@@ -85,10 +84,8 @@ passport.deserializeUser(async (id, done) => {
         }
         //De lo contrario, realizar la consulta a la base de datos utilizando el id en la serialización
         const user = await users.getIdUser(id);
-      
         //Almacena el usuario en la caché si apenas se registro en la página
         userCache[id] = user;
-
         //Retorna el usuario encontrado en la página
         return done(null, user);
   
@@ -98,6 +95,7 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
+//Ruta que informa una página de error al no cargar correctamente el servicio o la solicitud por parte del servidor
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Algo salió mal');
@@ -108,7 +106,6 @@ app.use(express.urlencoded({ extended: true })); //Se debe de cargar antes de la
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(express.static('public'));
 app.use(express.static('assets'));
 app.use(express.json());
@@ -117,9 +114,9 @@ app.use(express.json());
 app.use('/', router);
 
 //Ruta para cerrar sesión desde la Ruta raíz al ejecutar la app
-app.get('/logout', async (req, res) => {
+app.get('/logout', authMiddleware.authenticate, async (req, res) => {
     // Verifica si el usuario está autenticado antes de cerrar la sesión
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() || req.user) {
         const userName = req.user.userName; // Obtén el nombre de usuario del usuario autenticado
         
         try {
@@ -153,7 +150,7 @@ app.get('/logout', async (req, res) => {
     });
 });
 
-//Puerto para la app
+//Puerto para iniciar la app
 const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);

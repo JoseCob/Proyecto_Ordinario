@@ -1,0 +1,14 @@
+extends header 
+
+block content
+    .container-CRTCollection
+        h1.title-CRTCollection #{title}
+        p.text-CRTCollection Identificador de la colección
+
+        form(action='/create-crtCollection' method='POST' enctype='multipart/form-data')
+            .container-form-coverCRTCollection
+                input(accept='image/png,image/jpeg' type='file' name='imageCRTCollection' id='imageCRTCollection' class='img-CRTCollection')
+                .row-form-CRTCollection
+                    label(for='categoryCollection' class='label-CRTCollection') Categoria de la colección
+                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...' autofocus, required)
+                    button(type='submit' class='btn-form-CRTCollection') Crear Colección
