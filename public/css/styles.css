@@ -179,7 +179,6 @@ i {
 .container-left, .container-right {
     width: 500px;
     height: auto; 
-    padding: auto;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -435,6 +434,111 @@ input:hover, input:focus, input:active, input:focus-visible {
 }
 .btnRegister{
     margin-top: 40px !important;
+}
+
+/*Crear Colección*/
+.container-CRTCollection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(227, 226, 226, 0.625);
+    height: 100%;
+}
+.title-CRTCollection{
+    margin-top: 25px;
+    margin-bottom: 40px;
+    color: #e60303;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: "Shippori Antique B1", sans-serif;
+}
+.header-CRTCollection{
+    display: flex;
+    align-items: center;
+    font-size: 28px !important;
+    margin-top: -25px;
+    color: #070d73;
+}
+.container-form-coverCRTCollection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.text-CRTCollection{
+    color: #46A70F;
+    font-weight: 600;
+    font-size: 24px;
+}
+.container-img-CRTCollection{
+    padding: 5px;
+    border: 2px solid #070d73;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 80px;
+    margin-bottom: 20px;
+    user-select: none;
+    pointer-events: none; 
+}
+.input-img-CRTCollection{
+    display: none;
+}
+.btn-CRTCollection{
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #e60303;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.btn-CRTCollection:hover{
+    background-color: #e60303c4;
+    cursor: pointer;
+}
+.row-form-CRTCollection{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+.label-CRTCollection{
+    padding: 5px;
+    font-size: 20px;
+    margin-right: 10px;
+    text-align: left;
+}
+.form-input-CRTCollection{
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid #070d73;
+    text-align: center;
+}
+.form-input-CRTCollection:hover, 
+.form-input-CRTCollection:focus, 
+.form-input-CRTCollection:active, 
+.form-input-CRTCollection:focus-visible {
+    border: 1px solid #070d73;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #070d73;
+}
+
+.btn-form-CRTCollection{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    background-color: #46A70F;
+    font-size: 22px;
+}
+.btn-form-CRTCollection:hover{
+    background-color: #368d0384;
+    cursor: pointer;
 }
 
 /*responsive para celulares*/

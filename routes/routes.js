@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware'); // Importa el middleware de autenticación para solicitar el inicio de sesión
+const crtCollectionController = require('../controllers/crtCollectionController'); //Controlador para cifrar en Cesar
+const upload = require('../middlewares/uploadMiddleware'); // Se importa el middleware del multer
 
 //Rutas para navegar en las opciones de la app
 const index = require('./index'); //Llama al archivo index.js con la variable index
@@ -29,4 +31,9 @@ router.use('/crtCollection', crtCollection); //Usa el archivo crtCollection.js m
 router.use('/seeCollections', seeCollections); //Usa el archivo seeCollections.js
 router.use('/addCollection', addCollection); //Usa el archivo addCollection.js
 router.use('/lookCollection', lookCollection); //Usa el archivo lookCollection.js
+
+/*Rutas POST*/
+//Llamamos al controlador='crtCollectionController' para crear nuevas olecciones con la función crtCollection y la funcion upload
+router.post('/create-crtCollection', upload.single('imageCRTCollection'), crtCollectionController.crtCollection);
+
 module.exports = router;
