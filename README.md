@@ -21,6 +21,7 @@ Para usar la app, hay que hacer ciertas configuraciones en la base de datos de m
 * __14.- sass__
 * __15.- multer__
 * __16.- sharp__
+* __17.- node-cache__
 
 Para usar todas estas dependencias en nuestro dispositivo, ejecute en la terminal estando ubicado la ruta principal del archivo:
 - _`npm install`_
@@ -63,6 +64,12 @@ La app, utilizo la siguiente dependencia, para manejar uploads la cual, se utili
 > Se utilizo la dependencia sharp, la cual se utiliza para procesar imágenes de alto rendimiento o calidad.
 Permitiendo redimensionar, convertir y manipular imágenes en varios formatos.
 Es especialmente útil para optimizar imágenes antes de almacenarlas o mostrarlas en una aplicación web.
+
+### Dependencia node-cache
+**Instalacion del sharp:**
+- _`npm install node-cache -E`_
+> Se utilizo la dependencia node-cache, la cual se utiliza para el rendimiento de la aplicación. Es un mecanismo eficiente para almacenar y acceder a datos en la memoria.
+> Esto fue útil especialmente cuando necesitamos acceder a los mismos datos de forma repetida en un corto período de tiempo o cuando deseas evitar realizar operaciones costosas para obtener los datos y evitar los tiempos de carga demaciadas largas en la app.
 
 ## Configuración del env
 Para utilizar la Base de datos de la app, se necesita configurar el .env de la app con base a las propiedas del servidor de mysql del usuario que va a utilizar nuestra app.
