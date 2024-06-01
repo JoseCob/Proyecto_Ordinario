@@ -66,7 +66,7 @@ Permitiendo redimensionar, convertir y manipular imágenes en varios formatos.
 Es especialmente útil para optimizar imágenes antes de almacenarlas o mostrarlas en una aplicación web.
 
 ### Dependencia node-cache
-**Instalacion del sharp:**
+**Instalacion del node-cache:**
 - _`npm install node-cache -E`_
 > Se utilizo la dependencia node-cache, la cual se utiliza para el rendimiento de la aplicación. Es un mecanismo eficiente para almacenar y acceder a datos en la memoria.
 > Esto fue útil especialmente cuando necesitamos acceder a los mismos datos de forma repetida en un corto período de tiempo o cuando deseas evitar realizar operaciones costosas para obtener los datos y evitar los tiempos de carga demaciadas largas en la app.

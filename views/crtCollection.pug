@@ -6,11 +6,15 @@ block content
         .header-CRTCollection
             i.icon.material-symbols-outlined chevron_right
             p Identificador de la colección
-
-        form(action='/create-crtCollection' method='POST' enctype='multipart/form-data')
+         
+        if errorMessage
+            p.error-message-CRTCollection #{errorMessage}
+        else 
+            p.error-message-CRTCollection *Solo se puede subir imagenes con el formato png
+        form(class='form-CRTCollection' action='/create-crtCollection' method='POST' enctype='multipart/form-data')
             .container-form-coverCRTCollection
                 p.text-CRTCollection Imagen representativa de la colección
-                img.container-img-CRTCollection(src='/icono-camara-gris.png', alt='cover' id='img-CRTCollection')
+                img.container-img-CRTCollection(src='/icono-camara-gris.png', alt='' id='img-CRTCollection')
                 input(accept='image/png' type='file' name='imageCRTCollection' id='imageCRTCollection' class='input-img-CRTCollection')
                 label(for='imageCRTCollection' class='btn-CRTCollection') Seleccionar imagen
                 .row-form-CRTCollection

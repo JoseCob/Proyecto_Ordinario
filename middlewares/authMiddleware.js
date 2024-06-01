@@ -16,23 +16,24 @@ async function authenticate(req, res, next){
         return res.redirect('/login');
     }
 
-    try{
-        //constante que verifica el token usando la clave secreta = 'ACCESS_TOKEN_SECRET'
-        const decoded = jwt.verify(token, process.env.SESSION_SECRET); // esta constante esta codificando el token secreto (clave secreta) con la clave "SESSION_SECRET" del .env
-        //Almacena el ID del usuario en la solicitud para su posterior uso
+    try {
+        // Constante que verifica el token usando la clave secreta = 'ACCESS_TOKEN_SECRET'
+        const decoded = jwt.verify(token, process.env.SESSION_SECRET);
+        // Almacena el ID del usuario en la solicitud para su posterior uso
         req.userId = decoded.userId;
-
+    
         // Cargar el usuario desde la base de datos
-        if (!req.user) {
+        if (!req.session.user) {
+            // Si no está en la sesión, carga la información del usuario desde la base de datos
             const user = await users.getIdUser(req.userId);
-            if(user){
-                req.user = user;
+            if (user) {
+                req.session.user = user; // Almacena la información del usuario en la sesión
             }
         }
-        next(); //pasa al siguiente Middleware de autenticación
+        next(); // Pasa al siguiente Middleware de autenticación
     } catch (err) {
-        //si hay un error en la verificación del token, redirige al usuario al login}
-        return res.redirect('/login'); 
+        // Redirige al usuario al login
+        return res.redirect('/login');
     }
 }
 // Función para generar un token JWT

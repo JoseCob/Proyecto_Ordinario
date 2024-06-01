@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware'); // Importa el middleware de autenticación para solicitar el inicio de sesión
 const crtCollectionController = require('../controllers/crtCollectionController'); //Controlador para cifrar en Cesar
-const upload = require('../middlewares/uploadMiddleware'); // Se importa el middleware del multer
+const uploadMiddleware = require('../middlewares/uploadMiddleware'); // Se importa el middleware del multer
 
 //Rutas para navegar en las opciones de la app
 const index = require('./index'); //Llama al archivo index.js con la variable index
@@ -32,8 +32,10 @@ router.use('/seeCollections', seeCollections); //Usa el archivo seeCollections.j
 router.use('/addCollection', addCollection); //Usa el archivo addCollection.js
 router.use('/lookCollection', lookCollection); //Usa el archivo lookCollection.js
 
-/*Rutas POST*/
-//Llamamos al controlador='crtCollectionController' para crear nuevas olecciones con la función crtCollection y la funcion upload
-router.post('/create-crtCollection', upload.single('imageCRTCollection'), crtCollectionController.crtCollection);
+/*-- Rutas POST --*/
+
+/*Llamamos al controlador='crtCollectionController' para crear nuevas colecciones con el authMiddleware, la función uploadMiddleware 
+y la funcion crtCollection con el fin de obtener los datos , habiendo un usuario autenticado en la sesión y que este pueda crear las colecciones*/
+router.post('/create-crtCollection',  authMiddleware.authenticate, uploadMiddleware, crtCollectionController.crtCollection);
 
 module.exports = router;

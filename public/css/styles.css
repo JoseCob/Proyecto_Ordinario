@@ -144,12 +144,13 @@ i {
 }
 
 .container-main {
-    padding: 35px 20px;
+    padding: 30px 10px;
     margin-top: 70px;
     background-color: #fff;
     border-radius: 15px;
     flex-grow: 1; /* Añadido para permitir que el contenido principal ocupe el espacio restante */
     transition: margin-left 250ms ease; /* Añadir transición suave para el margen izquierdo */
+    width: auto;
 }
 
 .title-main{
@@ -441,10 +442,15 @@ input:hover, input:focus, input:active, input:focus-visible {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: rgba(227, 226, 226, 0.625);
     height: 100%;
 }
 .title-CRTCollection{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     margin-top: 25px;
     margin-bottom: 40px;
     color: #e60303;
@@ -458,6 +464,14 @@ input:hover, input:focus, input:active, input:focus-visible {
     font-size: 28px !important;
     margin-top: -25px;
     color: #070d73;
+}
+.error-message-CRTCollection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #e60303;
+    font-size: 18px;
 }
 .container-form-coverCRTCollection{
     display: flex;
@@ -487,13 +501,14 @@ input:hover, input:focus, input:active, input:focus-visible {
 }
 .btn-CRTCollection{
     padding: 12px;
-    border-radius: 15px;
+    border-radius: 12px;
     background-color: #e60303;
     color: white;
     font-weight: 400;
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
+    user-select: none;
 }
 .btn-CRTCollection:hover{
     background-color: #e60303c4;
@@ -527,14 +542,14 @@ input:hover, input:focus, input:active, input:focus-visible {
     outline-style: solid;
     outline-color: #070d73;
 }
-
 .btn-form-CRTCollection{
     padding: 10px;
-    border-radius: 12px;
+    border-radius: 8px;
     border: none;
     color: white;
     background-color: #46A70F;
     font-size: 22px;
+    user-select: none;
 }
 .btn-form-CRTCollection:hover{
     background-color: #368d0384;
@@ -579,9 +594,6 @@ input:hover, input:focus, input:active, input:focus-visible {
 
     .title-main{
         font-size: 1rem;
-    }
-    .container-welcome{
-        padding: auto;
     }
     .row-container-welcome{
         margin-top: -50px;
@@ -681,6 +693,54 @@ input:hover, input:focus, input:active, input:focus-visible {
     .form-input-register{
         font-size: 1.1rem;
         padding: 6px;
+    }
+
+    /*Crear Colección*/
+    .title-CRTCollection{
+        font-size: 1rem;
+    }
+    .header-CRTCollection{
+        font-size: 1rem !important;
+    }
+    .error-message-CRTCollection{
+        font-size: 0.8rem;
+    }
+    .form-CRTCollection{
+        max-width: 100%;
+        height: auto;
+    }
+    .text-CRTCollection{
+        font-size: 1rem;
+        width: 90%;
+    }
+    .container-img-CRTCollection{
+        width: 85px;
+        height: 85px;
+    }
+    .btn-CRTCollection{
+        width: 80%;
+        border-radius: 6px;
+        font-size: 1rem;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .row-form-CRTCollection{
+       display: flex;
+       flex-direction: column;
+       width: 90%; 
+    }
+    .label-CRTCollection{
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    .form-input-CRTCollection{
+        font-size: 0.8rem;
+        padding: 3.5px;
+    }
+    .btn-form-CRTCollection{
+        font-size: 1rem;
+        width: 80%;
+        margin-bottom: 10px;
     }
 }
 

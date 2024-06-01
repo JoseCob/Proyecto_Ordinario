@@ -5,14 +5,14 @@ const authMiddleware = require('../middlewares/authMiddleware'); //Se requiere l
 //Ruta que obtiene la autenticacion de usuarios, si hay usuario autenticado, lo dirige al seeCollections.pug y obtiene sus datos
 router.get('/', authMiddleware.authenticate, (req, res) => {
     //Verifica los datos del usuario para llamarlo en la vista en cualquier momento
-    if (req.user) {
-        const { firstName, firstSurname } = req.user;
+    if (req.session.user) {
+        const { firstName, firstSurname } = req.session.user;
         res.render('seeCollections', {
             title: 'Ver Colecciones',
             firstName: firstName, //Obtiene el Nombre de pila
             firstSurname: firstSurname //Obtiene el Primer Apellido
         });
-        //En caso de no obtener los datos, lo dirige al index sin los datos previos
+    //En caso de no obtener los datos, lo dirige al seeCollections sin los datos previos
     } else {
         res.render('seeCollections', { title: 'Ver Colecciones' });
     }
