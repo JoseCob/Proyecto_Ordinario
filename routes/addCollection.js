@@ -8,13 +8,13 @@ router.get('/', authMiddleware.authenticate, (req, res) => {
     if (req.session.user) {
         const { firstName, firstSurname } = req.session.user;
         res.render('addCollection', {
-            title: 'Agregar Colección',
+            title: 'Agregar Nuevo Elemento a la Colección',
             firstName: firstName, //Obtiene el Nombre de pila
             firstSurname: firstSurname //Obtiene el Primer Apellido
         });
     //En caso de no obtener los datos, lo dirige al addCollection sin los datos previos
     } else {
-        res.render('addCollection', { title: 'Agregar Colección' });
+        res.render('addCollection', { title: 'Agregar Nuevo Elemento a la Colección' });
     }
 });
 

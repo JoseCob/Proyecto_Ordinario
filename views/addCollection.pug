@@ -1,5 +1,83 @@
 extends header 
 
 block content
-    h1 #{title}
-    p Hola Vista 3
+    .container-CRTCollection
+        h1.title-CRTCollection #{title}
+        .header-CRTCollection
+            i.icon.material-symbols-outlined chevron_right
+            p Identificador de la colección
+        if errorMessage
+            p.error-message-CRTCollection #{errorMessage}
+        else 
+            p.error-message-CRTCollection *Se puede subir imagenes con el formato jpeg, jpg y png.
+            p.error-message-CRTCollection ¡La imagen es obligatorio!, si no se selecciona, no se enviara los datos 
+        form(class='form-CRTCollection' action='/add-collection' method='POST' enctype='multipart/form-data')
+            .container-form-coverCRTCollection
+                p.text-CRTCollection Imagen representativa de la colección
+                img.container-img-CRTCollection(src='/icono-camara-gris.png', alt='' id='img-CRTCollection')
+                input(accept='image/*' type='file' name='imageCRTCollection' id='imageCRTCollection' class='input-img-CRTCollection', required)
+                label(for='imageCRTCollection' class='btn-CRTCollection') Seleccionar imagen
+                .row-form-CRTCollection
+                    label(for='categoryCollection' class='label-CRTCollection') Nombre de la colección
+                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...' autofocus, required)
+                .row-form-CRTCollection
+                    label(for='categoryCollection' class='label-CRTCollection') Creador de la colección
+                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...', required)
+                .row-form-CRTCollection
+                    label(for='categoryCollection' class='label-CRTCollection') Patrocinador de la colección
+                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...', required)
+                .container-other-addCollection
+                    p.other-addCollection Datos opcionales
+                    i.material-symbols-outlined unfold_more
+
+                .expand-other-addCollection
+                    .row-form-CRTCollection
+                        label(for='categoryCollection' class='label-CRTCollection') Fecha de publicación de la colección
+                        input(type='date' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...')
+                    .row-form-CRTCollection
+                        label(for='categoryCollection' class='label-CRTCollection') Género de la colección
+                        input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...')
+                    .row-form-CRTCollection
+                        label(for='categoryCollection' class='label-CRTCollection') Descripción adicional de la colección
+                    textarea(type='text' name='categoryCollection' id='categoryCollection' class='form-textarea-CRTCollection' placeholder='Películas, Libros, etc...' rows='4')
+                button(type='submit' class='btn-form-CRTCollection') Añadir Elemento
+
+    script.
+        //script para mostrar imagenes cargadas por el file a la vista de la página
+        const defaultFile = '/icono-camara-gris.png'; //Constante que atrae la imagen por defecto
+        const fileImg = document.getElementById('imageCRTCollection');//Constante para el input que carga o sube la imagen
+        const img = document.getElementById('img-CRTCollection'); //constante donde se va a remplazara la imagen por defecto y visualizar la nueva imagen cargada
+
+        //Evento que obtiene los parametros de la imagen para aplicar la visualización y cambio de imagen
+        fileImg.addEventListener('change', e =>{
+            if( e.target.files[0]){
+                const reader = new FileReader();
+                reader.onload = function( e ){
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0])
+            }else{
+                img.src = defaultFile;//Si no se lecciona una imagen al abrir el input type='file', carga la imagen por defecto 
+            }
+        });
+
+        //script para ocultar Datos opcionales
+        const expandOther = document.querySelector('.expand-other-addCollection');//Selecciona el estilo expand-other-addCollection para la transición de mostrar otras opciones
+        const containerOther = document.querySelector('.container-other-addCollection');// selecciona el estilo container-other-addCollectio
+        //Expande el menú de Datos opcionales al cargar la página
+        expandOther.style.maxHeight = '0'
+        //Agrega un evento de clic a Datos opcionales
+        containerOther.addEventListener('click', function() {
+            if (expandOther.style.maxHeight === '0px') {//Verica si esta en la altura 0
+                expandOther.style.maxHeight = '500px'; //Si esta en la altura 0. Cambia la altura máxima para visualizar el contenido, 500 es lo recomendado
+            } else {
+                expandOther.classList.add('closing'); //Se agrega la clase del cierre declarado en el styles.css
+                setTimeout(function() {
+                    expandOther.style.maxHeight = '0';
+                    //Elimina la clase de cierre después de que termine la transición
+                    setTimeout(function() {
+                        expandOther.classList.remove('closing');
+                    }, 0); //Estimar el tiempo de respuesta para la animación de cierre
+                }, 0); //Espera 0 milisegundos antes de establecer la altura máxima en 0, es decir para que se cierre
+            }
+        });

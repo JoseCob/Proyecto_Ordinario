@@ -8,13 +8,13 @@ router.get('/', authMiddleware.authenticate, (req, res) => {
     if (req.session.user) {
         const { firstName, firstSurname } = req.session.user; //Obtiene la información del usuario de la sesión
         res.render('crtCollection', {
-            title: 'Crear Colección',
+            title: 'Crear categoría de la Colección',
             firstName: firstName, //Obtiene el Nombre de pila
             firstSurname: firstSurname //Obtiene el Primer Apellido
         });
     //En caso de no obtener los datos, lo dirige al crtCollection sin los datos previos del usuario
     } else {
-        res.render('crtCollection', { title: 'Crear Colección' });
+        res.render('crtCollection', { title: 'Crear categoría de la Colección' });
     }
 });
 

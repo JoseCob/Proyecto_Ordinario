@@ -518,9 +518,9 @@ input:hover, input:focus, input:active, input:focus-visible {
 }
 .row-form-CRTCollection{
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 20px;
     width: 100%;
 }
 .label-CRTCollection{
@@ -545,6 +545,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     outline-color: #070d73;
 }
 .btn-form-CRTCollection{
+    margin-top: 20px;
     padding: 10px;
     border-radius: 8px;
     border: none;
@@ -556,6 +557,44 @@ input:hover, input:focus, input:active, input:focus-visible {
 .btn-form-CRTCollection:hover{
     background-color: #368d0384;
     cursor: pointer;
+}
+/* parte para agregar Colección*/
+.container-other-addCollection{
+    display: flex;
+    align-items: center;
+    font-size: 18px !important;
+    background-color: #9f9696;
+    color: white;
+    border-radius: 12px;
+    padding: 0 0 0 10px;
+    user-select: none;
+    margin-right: auto;
+}
+.container-other-addCollection:hover{
+    background-color: #6b6868;
+    cursor: pointer;
+}
+.expand-other-addCollection{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms linear;
+}
+.expand-other-addCollection.closing {
+    transition: max-height 300ms linear;
+}
+.form-textarea-CRTCollection{
+    width: 100%;
+    border: 1px solid #070d73;
+    resize: none;
+}
+.form-textarea-CRTCollection:hover, 
+.form-textarea-CRTCollection:focus, 
+.form-textarea-CRTCollection:active, 
+.form-textarea-CRTCollection:focus-visible {
+    border: 1px solid #070d73;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #070d73;
 }
 
 /*Ver colección*/
@@ -640,6 +679,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     background-color: #990606;
     cursor: pointer;
 }
+
 /*responsive para celulares*/
 @media only screen and (max-width: 767px) {
     /*navbar*/
@@ -817,6 +857,8 @@ input:hover, input:focus, input:active, input:focus-visible {
     .row-form-CRTCollection{
        display: flex;
        flex-direction: column;
+       justify-content: center;
+       text-align: center;
        width: 90%; 
     }
     .label-CRTCollection{
@@ -831,6 +873,19 @@ input:hover, input:focus, input:active, input:focus-visible {
         font-size: 1rem;
         width: 80%;
         margin-bottom: 10px;
+    }
+    /* parte para agregar Colección*/
+    .container-other-addCollection{
+        font-size: 1rem !important;
+        margin: auto;
+    }
+    .expand-other-addCollection{
+        width: 80%;
+        margin: auto;
+    }
+    .form-textarea-CRTCollection{
+        font-size: 1rem;
+        margin-right: auto;
     }
 
     /*Ver colección*/
