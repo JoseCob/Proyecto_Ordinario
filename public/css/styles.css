@@ -25,6 +25,18 @@ hr{
     background-color: #272727;
 }
 
+h1{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#e60303;
+    font-weight: 600;
+    font-family: "Shippori Antique B1", sans-serif;
+    font-style: normal;
+}
+
+/*navbar*/
 nav {
     position: fixed; /* Se cambio a fixed para mantener el navbar siempre visible */
     top: 0;
@@ -83,6 +95,7 @@ i {
     font-family: "Geologica", sans-serif;
 }
 
+/*sidebar*/
 #sidebar {
     display: flex;
     flex-direction: column;
@@ -143,6 +156,7 @@ i {
     color: rgba(131, 11, 11, 0.888);
 }
 
+/*Contenedor main*/
 .container-main {
     padding: 30px 10px;
     margin-top: 70px;
@@ -153,16 +167,10 @@ i {
     width: auto;
 }
 
+/*index*/
 .title-main{
-    display: flex;
-    justify-content: center;
-    text-align: center;
     margin-top: 25px;
     margin-bottom: 40px;
-    color:#e60303;
-    font-weight: 600;
-    font-family: "Shippori Antique B1", sans-serif;
-    font-style: normal;
 }
 .container-welcome{
     width: 100%;
@@ -234,11 +242,14 @@ i {
     line-height: 1.8;
     color: black;
     font-size: 20px;
+    text-decoration-color: darkgoldenrod;
 }
 .menu-welcome a:hover{
     color: #1951d3;
+    text-decoration-color: #1951d3;
 }
 
+/*login*/
 .cover-form{
     background-image: url('/gestion-empresarial.webp');
     background-repeat:no-repeat;
@@ -447,16 +458,7 @@ input:hover, input:focus, input:active, input:focus-visible {
     height: 100%;
 }
 .title-CRTCollection{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    margin-top: 25px;
-    margin-bottom: 40px;
-    color: #e60303;
-    font-weight: 600;
-    font-size: 30px;
-    font-family: "Shippori Antique B1", sans-serif;
+    margin-bottom: 50px;
 }
 .header-CRTCollection{
     display: flex;
@@ -556,8 +558,91 @@ input:hover, input:focus, input:active, input:focus-visible {
     cursor: pointer;
 }
 
+/*Ver colección*/
+.card-title{
+    text-align: center;
+    justify-content: center;
+}
+.card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 10px 50px 10px 50px;
+}
+.card-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(227, 226, 226, 0.666);
+    margin-top: 25px;
+    border-radius: 20px;
+}
+.card-img{
+    background-color: white;
+    margin: 30px 50px 30px 20px;
+    border-radius: 20px;
+    width: 140px;
+    height: 140px;
+    user-select: none;
+    pointer-events: none;
+}
+.row-card-left{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.title-card{
+    font-size: 24px;
+    color: #070d73;
+    margin: 0;
+}
+.text-card{
+    font-size: 20px;
+    font-weight: 500;
+}
+.row-card-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-container-btn a i{
+    padding: 1.5px;
+    margin-top: 135px;
+    border-radius: 5px;
+    color: white;
+    font-size: 38px !important;
+    margin-right: 10px;
+    user-select: none;
+}
+.btn-add i{
+    background-color: #5abc20;
+}
+.btn-add i:hover{
+    background-color: #2c6f05;
+    cursor: pointer;
+}
+.btn-visibility i{
+    background-color: #1d7ad6;
+}
+.btn-visibility i:hover{
+    background-color: #070d73;
+    cursor: pointer;
+}
+.btn-delete i{
+    background-color: #ee1616;
+}
+.btn-delete i:hover{
+    background-color: #990606;
+    cursor: pointer;
+}
 /*responsive para celulares*/
 @media only screen and (max-width: 767px) {
+    /*navbar*/
     nav{
         padding: 0;
     }
@@ -578,6 +663,7 @@ input:hover, input:focus, input:active, input:focus-visible {
         margin-left: 5px;
     }
 
+    /*sidebar*/
     #sidebar{
         width: 190px;
         box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
@@ -592,6 +678,7 @@ input:hover, input:focus, input:active, input:focus-visible {
         font-size: 1rem;
     }
 
+    /*index*/
     .title-main{
         font-size: 1rem;
     }
@@ -696,6 +783,9 @@ input:hover, input:focus, input:active, input:focus-visible {
     }
 
     /*Crear Colección*/
+    .container-CRTCollection{
+        height: auto;
+    }
     .title-CRTCollection{
         font-size: 1rem;
     }
@@ -742,8 +832,89 @@ input:hover, input:focus, input:active, input:focus-visible {
         width: 80%;
         margin-bottom: 10px;
     }
+
+    /*Ver colección*/
+    .card-title{
+        font-size: 1.1rem;
+    }
+    .card-container {
+        margin-top: 20px;
+        display: grid;
+        gap: 25px;
+        background: none;
+    }
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px;
+        height: auto;
+        background-color: rgba(227, 226, 226, 0.666);
+        border-radius: 15px;
+    }
+    .card-img {
+        width: 80px; 
+        height: 80px;
+        margin: 20px auto 20px auto;
+    }
+    .row-card-left{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title-card {
+        text-align: center;
+        font-size: 1rem;
+        margin: 0 6px 0 6px;
+    }
+    .text-card {
+        font-size: 1rem;
+    }
+    .card-container-btn .card-icon{
+        font-size: 25px !important;
+        margin-top: 5px;
+    }
 }
 
+/*responsive para Tabletas*/
 @media only screen and (min-width: 768px) and (max-width:1024px){
+    /*Ver colección*/
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        column-gap: 7px;
+        margin: 0;
+        background: none;
 
+    }
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        background-color: rgba(227, 226, 226, 0.666);
+        border-radius: 15px;
+    }
+    .card-img {
+        width: 120px; 
+        height: 120px;
+        margin: 20px auto 20px auto;
+    }
+    .row-card-left{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title-card {
+        text-align: center;
+        margin: 0 5px 0 5px;
+    }
+    .card-container-btn .card-icon {
+        font-size: 32px !important;
+        margin-top: 5px;
+    }
 }

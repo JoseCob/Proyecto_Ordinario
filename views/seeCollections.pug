@@ -1,5 +1,20 @@
 extends header 
 
 block content
-    h1 #{title}
-    p Hola Vista 2
+    h1.card-title #{title}
+    .card-container
+        .card-content
+            Img(class='card-img' src='/icono-camara-gris.png' alt='' id='imageCRTCollection')
+            .row-card-left
+                h3.title-card Categoria
+                p.text-card Peliculas 
+                h3.title-card Fecha de creación
+                p.text-card 12/05/2024
+            .row-card-right
+                .card-container-btn
+                    a(href='#' class='btn-add')
+                        i.card-icon.material-symbols-outlined add_box
+                    a(href='#' class='btn-visibility')
+                        i.card-icon.material-symbols-outlined visibility
+                    a(href='#' class='btn-delete')
+                        i.card-icon.material-symbols-outlined delete

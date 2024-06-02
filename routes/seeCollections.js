@@ -8,7 +8,7 @@ router.get('/', authMiddleware.authenticate, (req, res) => {
     if (req.session.user) {
         const { firstName, firstSurname } = req.session.user;
         res.render('seeCollections', {
-            title: 'Ver Colecciones',
+            title: 'Lista de Colecciones',
             firstName: firstName, //Obtiene el Nombre de pila
             firstSurname: firstSurname //Obtiene el Primer Apellido
         });
