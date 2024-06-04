@@ -56,7 +56,6 @@ async function authenticateUserName(userName, password, done) {
         
         // Registra el inicio de sesión del usuario utilizando su nombre de usuario
         await registerLogin.registerLogin(userName);
-        console.log('Inicio de sesión registrado del usuario:', userName);
   
         console.log('El Usuario:', userName, 'Inicio Sesión Exitosamente');
         return done(null, user);

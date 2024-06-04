@@ -4,7 +4,8 @@
   "description": "Proyecto ordinario que va destinado a un sistema web de gestión de colecciones de productos",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start-sass": "sass styles/sass/styles.sass:public/css/styles.css",
+    "start": "npm run start-sass && nodemon server.js"
   },
   "keywords": [],
   "author": "Jose Cob",

@@ -11,7 +11,7 @@ const upload = multer({
     //Función que genere el filtro para cargar archivos
     fileFilter: function (req, file, cb) { /*Función que contgiene la solicitud HTTP, el objeto de archivo y 
     la función que genera una llamada para indicar si se debe aceptar o rechazar el archivo.*/
-        const filetypes = /png/; // Solo permite subir imagenes PNG
+        const filetypes = /jpeg|jpg|png|webp/; //Formatos de imagenes permitidos
         const mimetype = filetypes.test(file.mimetype); //Utiliza la expresión regular y verifica si es el tipo de archivo que se esta subiendo
         /* verifica si la extensión del nombre de archivo original coincide con la expresión regular, por eso se requiere 'path'
         ya que extrae la extensión del nombre de archivo original y luego se convierte a minúsculas para que coincida con la expresión regular*/
@@ -20,16 +20,17 @@ const upload = multer({
         //Si la expresion regular coincide con el nombre del archivo original en minúsculas 
         if (mimetype && extname) {
             return cb(null, true); //guarda la imagen
+
             //De lo contrario genera un mnesaje de error si no es el formato de la imagen permitido
         } else {
             console.log('¡La imagen:', file.originalname, 'no se pudo guardar en la base de datos!');
-            return cb(new Error('¡Solo se permite subir imágenes con formato PNG!'));
+            return cb(new Error('¡Solo se permite subir imágenes con formato jpeg, jpg, png, webp!'));
         }
     }
-}).single('imageCRTCollection');//indica que solo se espera recibir un archivo en la solicitud HTTP con el nombre del campo imageCRTCollection del formulario 'crtCollection.pug'
+}).single('imgAddCollection');//indica que solo se espera recibir un archivo en la solicitud HTTP con el nombre del campo imageCRTCollection del formulario 'addCollection.pug'
 
 module.exports = function (req, res, next) {
-    //Exporta la funcion del multer con mensajes de error y mostrarlo en la vista 'crtCollection.pug'
+    //Exporta la funcion del multer con mensajes de error y mostrarlo en la vista 'addCollection.pug'
     upload(req, res, function (err) {
         if (err) {
             //Si el mensaje de error genérico del multer es igual a 'File too large', remplaza el mensaje de error por uno personalizado
@@ -38,13 +39,13 @@ module.exports = function (req, res, next) {
                 console.log('La imagen no se guardo porque excedió el límite de 1MB');
             }
             //Si el mensaje del error en la vista coincide, muestra un mensaje personalizado en consola
-            if (err.message === '¡Solo se permite subir imágenes con formato PNG!') {
-                console.log('La imagen no es PNG, no se pudo procesar la imagen');
+            if (err.message === '¡Solo se permite subir imágenes con formato jpeg, jpg, png, webp!') {
+                console.log('La imagen no cumple con los formatos permitidos, no se pudo procesar la imagen');
             }
-            //Devuelve los mensajes de error a la vista 'crtCollection.pug'
+            //Devuelve los mensajes de error a la vista 'addCollection.pug'
             req.fileValidationError = err.message;
-            return res.render('crtCollection', {
-                title: 'Crear Colección',
+            return res.render('addCollection', {
+                title: 'Agregar Nuevo Elemento a la Colección',
                 errorMessage: req.fileValidationError,
                 firstName: req.session.user.firstName,
                 firstSurname: req.session.user.firstSurname

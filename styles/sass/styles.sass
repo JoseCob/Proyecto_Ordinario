@@ -1,0 +1,1021 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Geologica:wght@100..900&display=swap')
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap')
+
+.material-symbols-outlined
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+
+*
+  box-sizing: border-box
+
+body
+  font-family: Arial, Helvetica, sans-serif
+  height: 100vh
+  background-color: rgba(105, 86, 86, 0.1)
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: column
+
+hr
+  border: none
+  height: 1px
+  background-color: #272727
+
+h1
+  text-align: center
+  justify-content: center
+  align-items: center
+  text-align: center
+  color: #e60303
+  font-weight: 600
+  font-family: "Shippori Antique B1", sans-serif
+  font-style: normal
+
+/*navbar
+
+nav
+  position: fixed
+
+  /* Se cambio a fixed para mantener el navbar siempre visible
+  top: 0
+  width: 100%
+  text-align: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  background-color: #272727
+  padding: 0
+  user-select: none
+  font-size: 20px
+  z-index: 2
+
+  /* Asegura que el navbar esté por encima del sidebar
+
+  ul
+    display: flex
+    list-style-type: none
+    padding: 0
+    margin: 10px
+
+    li
+      display: inline-block
+      margin-right: 20px
+
+      a
+        display: flex
+        color: white
+        text-decoration: none
+        font-weight: bold
+        border-radius: 10px
+        transition: background-color 0.3s
+        cursor: pointer
+
+i
+  margin-top: -2px
+
+.img-container
+  display: flex
+  justify-content: center
+  align-items: center
+
+.img-sidebar
+  width: 65px
+  height: auto
+  vertical-align: middle
+  background-color: aliceblue
+  border-top-left-radius: 18px
+  border-top-right-radius: 18px
+  border-bottom-left-radius: 18px
+  border-bottom-right-radius: 18px
+  padding: 0 5px 0 0
+
+.text-logo
+  margin-left: 12px
+  font-family: "Geologica", sans-serif
+
+/*sidebar
+
+#sidebar
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  position: fixed
+
+  /* Cambiado a fixed para mantener el sidebar siempre visible
+  top: 70px
+
+  /*Altura del navbar
+  width: 305px
+  height: calc(100% - 70px)
+
+  /* Asegura que el sidebar ocupe el resto de la ventana menos la altura del navbar
+  background-color: white
+  left: -310px
+  transition: all 250ms ease
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6)
+  overflow-x: hidden
+
+  /* Oculta el desplazamiento horizontal
+  overflow-y: auto
+  z-index: 1
+
+  /* Asegura que el sidebar esté por encima del contenido pero debajo del navbar
+  user-select: none
+
+  &.active
+    left: 0
+
+.sidebar-list
+  margin-left: -40px
+
+  .sidebar-category
+    list-style: none
+    margin-left: 5px
+    padding: 25px 0
+
+.sidebar-element
+  color: #272727
+  text-decoration: none
+
+.user-sidebar, .sidebar-element:not(.user-sidebar):hover
+  color: #1951d3
+
+.sidebar-element-container
+  display: flex
+  text-align: left
+
+.img-sidebar-element
+  font-size: 35px !important
+
+.sidebar-category-text
+  margin-top: 5px
+  font-size: 22px
+
+.sidebar-footer
+  list-style: none
+
+.btnLogout
+  color: rgb(255, 0, 0)
+  padding: 20px
+
+  &:hover
+    color: rgba(131, 11, 11, 0.888)
+
+/*Contenedor main
+
+.container-main
+  padding: 30px 10px
+  margin-top: 70px
+  background-color: #fff
+  flex-grow: 1
+
+  /* Añadido para permitir que el contenido principal ocupe el espacio restante
+  transition: margin-left 250ms ease
+
+  /* Añadir transición suave para el margen izquierdo
+  width: auto
+
+/*index
+
+.title-main
+  margin-top: 25px
+  margin-bottom: 40px
+
+.container-welcome
+  width: 100%
+  padding-right: 15px
+  padding-left: 15px
+  margin-right: auto
+  margin-left: auto
+
+.row-container-welcome
+  display: flex
+  justify-content: center
+  padding: 50px
+  background-color: rgba(227, 226, 226, 0.3)
+
+.container-left, .container-right
+  width: 500px
+  height: auto
+  background-color: #fff
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4)
+  display: flex
+  flex-direction: column
+  border-radius: 18px
+  align-items: center
+  margin: 0
+  font-size: 22px
+
+.title-container-welcome
+  display: flex
+  justify-content: center
+  text-align: center
+  color: #272727
+  margin: 15px
+  font-size: 26px
+
+.text-container-welcome
+  margin-top: -10px
+  padding: 35px
+  font-style: italic
+  font-weight: 400
+
+.container-left
+  margin-right: 20px
+
+.container-right
+  margin-left: 20px
+
+.subText-container-welcome
+  margin-top: -70px
+  padding: 35px
+  font-style: italic
+  font-weight: 400
+
+.menu-welcome
+  padding: 35px
+  margin-top: -75px
+  float: left
+  width: 100%
+  margin-left: 40px
+  font-style: italic
+  font-weight: 400
+
+  li
+    color: #e60303
+    font-family: "Geologica", sans-serif
+    font-style: normal
+
+  a
+    text-decoration: underline
+    line-height: 1.8
+    color: black
+    font-size: 20px
+    text-decoration-color: darkgoldenrod
+
+    &:hover
+      color: #1951d3
+      text-decoration-color: #1951d3
+
+/*login
+
+.cover-form
+  background-image: url('/gestion-empresarial.webp')
+  background-repeat: no-repeat
+  background-size: cover
+  background-attachment: fixed
+
+  /*asegura que la imagen cubra todo el fondo sin que se repita o se salga del borde de la pantalla
+  margin: 0
+  padding: 0
+  height: 100vh
+  width: auto
+
+.img-login-header
+  user-select: none
+  pointer-events: none
+  background-color: white
+  padding: 6px
+  border-radius: 80px
+  width: 150px
+  height: auto
+  transform: translate(150%, -54%)
+
+.container-form
+  background-color: rgba(0, 0, 0, 0.5)
+  border-radius: 12px
+  max-width: 100%
+  width: 600px
+  position: absolute
+  top: 10%
+  left: 50%
+  transform: translate(-50%, 0%)
+
+.container-form-header
+  display: flex
+  flex-direction: column
+  justify-content: center
+  text-align: center
+
+.page-mark-login
+  color: white
+  font-size: 30px
+  font-weight: 400
+  font-family: "Geologica", sans-serif
+  transform: translate(0%, -220%)
+  margin-bottom: 10px
+
+.line-page-form
+  margin: 20px 0 -20px 100px
+  border: none
+  height: 3px
+  background-color: #1951d3
+  width: 65%
+
+.welcome-login
+  margin-top: -50px
+  color: white
+  font-weight: 900
+  font-size: 36px
+  font-family: "Geologica", sans-serif
+
+.title-login
+  margin-top: -5px
+  color: #ffffff
+  font-weight: 300
+  font-size: 26px
+  margin-bottom: 35px
+  font-family: "Shippori Antique B1", sans-serif
+
+.container-message-error
+  display: flex
+  justify-content: center
+  text-align: center
+
+.message-login-error
+  font-size: 22px
+  margin-top: -10px
+  color: #e60303
+  width: 100%
+  max-width: 80%
+  padding: 5px
+  border-radius: 5px
+  background-color: white
+
+.container-body-login
+  padding: 0 80px 40px 80px
+
+.login-text
+  color: white
+  font-size: 26px
+  font-weight: bold
+
+.input-icon-loginRow
+  display: flex
+  align-items: center
+  text-align: center
+  margin-top: 20px
+  margin-bottom: 25px
+  border: 1px solid #1951d3
+
+.login-icon
+  user-select: none
+  margin-top: 0
+  font-size: 50px !important
+  background-color: rgb(202, 198, 198)
+
+.form-input
+  width: 100%
+  padding: 13.5px
+  font-size: 20px
+  border: 1px solid #1951d3
+  border-left: none
+
+/*Quita el revelador de contraseñas de microsoft edge para el input type = 'password'
+
+\::-ms-reveal
+  display: none
+
+input
+  &:hover, &:focus, &:active, &:focus-visible
+    border: 1px solid #1951d3
+    outline-width: 1px
+    outline-style: solid
+    outline-color: #1951d3
+    border-left: none
+
+.btn-form
+  margin-top: 10px
+  width: 100%
+  background-color: #1951d3
+  color: white
+  padding: 12px
+  border-radius: 5px
+  border: none
+  font-size: 24px
+
+  &:hover
+    cursor: pointer
+    background-color: hwb(222 0% 1% / 0.575)
+
+.footer-form
+  margin-top: 25px
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 20px
+
+.text-content
+  color: white
+
+.suggesting-link
+  margin-left: 8px
+  border-bottom: 1px solid rgb(0, 213, 255)
+  color: rgb(0, 213, 255)
+
+  &:hover
+    color: #0095ff
+    border-bottom-color: #0095ff
+
+.suggesting-link-text
+  color: white
+  margin-left: 8px
+
+/*Registro
+
+.title-register
+  margin-top: 25px
+  color: #ffffff
+  font-weight: 300
+  font-size: 35px
+  margin-bottom: -2px
+  font-family: "Shippori Antique B1", sans-serif
+
+.welcome-register
+  margin-top: 40px
+  color: white
+  font-weight: 500
+  font-size: 30px
+  font-family: "Geologica", sans-serif
+
+.container-form-register
+  display: flex
+  flex-direction: column
+  justify-content: start
+  text-align: start
+  padding: 0 40px 20px 40px
+
+.form-label-register
+  font-size: 26px
+  margin-top: 20px
+  margin-bottom: 10px
+  color: white
+
+.form-input-register
+  padding: 12px
+  border: 1px solid #1951d3
+  font-size: 20px
+  border-left: none
+
+.btnRegister
+  margin-top: 40px !important
+
+/*Crear Colección
+
+.container-CRTCollection
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  background-color: rgba(227, 226, 226, 0.625)
+  height: 100%
+
+.title-CRTCollection
+  margin-bottom: 50px
+
+.header-CRTCollection
+  display: flex
+  align-items: center
+  font-size: 28px !important
+  margin-top: -25px
+  color: #070d73
+
+.error-message-CRTCollection
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  color: #e60303
+  font-size: 18px
+
+#alternateError
+  display: flex
+  justify-content: center
+  text-align: center
+  align-items: center
+  color: #bc1d1d
+  font-size: 18px
+
+.container-form-coverCRTCollection
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+
+.text-CRTCollection
+  color: #46A70F
+  font-weight: 600
+  font-size: 24px
+
+.container-img-CRTCollection
+  padding: 5px
+  border: 2px solid #070d73
+  width: 120px
+  height: 120px
+  overflow: hidden
+  border-radius: 80px
+  margin-bottom: 20px
+  user-select: none
+  pointer-events: none
+
+.input-img-CRTCollection
+  display: none
+
+.btn-CRTCollection
+  padding: 12px
+  border-radius: 12px
+  background-color: #e60303
+  color: white
+  font-weight: 400
+  font-size: 20px
+  margin-top: 20px
+  margin-bottom: 10px
+  user-select: none
+
+  &:hover
+    background-color: #e60303c4
+    cursor: pointer
+
+.row-form-CRTCollection
+  display: flex
+  justify-content: space-between
+  margin-top: 30px
+  margin-bottom: 20px
+  width: 100%
+
+.label-CRTCollection
+  padding: 5px
+  font-size: 20px
+  margin-right: 10px
+  text-align: left
+
+.form-input-CRTCollection
+  padding: 5px
+  font-size: 20px
+  border: 1px solid #070d73
+  text-align: center
+
+  &:hover, &:focus, &:active, &:focus-visible
+    border: 1px solid #070d73
+    outline-width: 1px
+    outline-style: solid
+    outline-color: #070d73
+
+.btn-form-CRTCollection
+  margin-top: 20px
+  padding: 10px
+  border-radius: 8px
+  border: none
+  color: white
+  background-color: #46A70F
+  font-size: 22px
+  user-select: none
+
+  &:hover
+    background-color: #368d0384
+    cursor: pointer
+
+/* parte para agregar Colección
+
+.container-other-addCollection
+  display: flex
+  align-items: center
+  font-size: 18px !important
+  background-color: #9f9696
+  color: white
+  border-radius: 12px
+  padding: 0 0 0 10px
+  user-select: none
+  margin-right: auto
+
+  &:hover
+    background-color: #6b6868
+    cursor: pointer
+
+.expand-other-addCollection
+  max-height: 0
+  overflow: hidden
+  transition: max-height 300ms linear
+
+  &.closing
+    transition: max-height 300ms linear
+
+.container-img-imgAddCollection
+  padding: 5px
+  border: 2px solid #070d73
+  width: 140px
+  height: 180px
+  overflow: hidden
+  border-radius: 12px
+  margin-bottom: 20px
+  user-select: none
+  pointer-events: none
+
+.form-textarea-CRTCollection
+  width: 100%
+  border: 1px solid #070d73
+  font-size: 20px
+  resize: none
+
+  &:hover, &:focus, &:active, &:focus-visible
+    border: 1px solid #070d73
+    outline-width: 1px
+    outline-style: solid
+    outline-color: #070d73
+
+/*Ver colección
+
+.card-title
+  text-align: center
+  justify-content: center
+
+.card-container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 5px
+  margin: 10px 50px 10px 50px
+
+.card-content
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  background-color: rgba(227, 226, 226, 0.666)
+  margin-top: 25px
+  border-radius: 20px
+
+.card-img
+  background-color: white
+  margin: 30px 50px 30px 20px
+  border-radius: 20px
+  width: 140px
+  height: 140px
+  user-select: none
+  pointer-events: none
+
+.row-card-left
+  display: flex
+  flex-grow: 1
+  flex-direction: column
+  justify-content: center
+  align-items: start
+
+.title-card
+  font-size: 24px
+  color: #070d73
+  margin: 0
+
+.text-card
+  font-size: 20px
+  font-weight: 500
+
+.row-card-right
+  display: flex
+  justify-content: center
+  align-items: center
+
+.card-container-btn a i
+  padding: 1.5px
+  margin-top: 135px
+  border-radius: 5px
+  color: white
+  font-size: 38px !important
+  margin-right: 10px
+  user-select: none
+
+.btn-add i
+  background-color: #5abc20
+
+  &:hover
+    background-color: #2c6f05
+    cursor: pointer
+
+.btn-visibility i
+  background-color: #1d7ad6
+
+  &:hover
+    background-color: #070d73
+    cursor: pointer
+
+.btn-delete i
+  background-color: #ee1616
+
+  &:hover
+    background-color: #990606
+    cursor: pointer
+
+/*responsive para celulares
+@media only screen and (max-width: 767px)
+  /*navbar
+
+  nav
+    padding: 0
+
+  i
+    margin-top: 0
+
+  .img-container
+    margin-left: -10px
+
+  .img-arrow-navbar
+    margin-left: -8px
+
+  .img-sidebar
+    width: 50px
+
+  .text-logo
+    font-size: 0.82rem
+    margin-left: 5px
+
+  /*sidebar
+
+  #sidebar
+    width: 190px
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.6)
+    top: 60px
+    height: calc(100% - 60px)
+
+  .img-sidebar-element
+    font-size: 25px !important
+
+  .sidebar-category-text
+    margin-top: 5px
+    font-size: 1rem
+
+  /*index
+
+  .title-main
+    font-size: 1rem
+
+  .row-container-welcome
+    margin-top: -50px
+    flex-direction: column
+    align-items: center
+    background-color: white
+
+  .container-left, .container-right
+    width: auto
+    font-size: 0.9rem
+    margin: 10px 0
+
+  .title-container-welcome
+    font-size: 0.9rem
+
+  .text-container-welcome
+    padding: 10px
+
+  .subText-container-welcome
+    padding: 10px
+    margin-top: -12px
+
+  .menu-welcome
+    margin-top: -50px
+    width: auto
+    margin-left: 0
+    padding: 70px
+    padding-left: 30px
+
+    a
+      font-size: 0.8rem
+      line-height: 3
+
+  /*login
+
+  .img-login-header
+    width: calc(30% - 10px)
+    transform: translate(132%, -54%)
+
+  .container-form
+    width: 90%
+    transform: translate(-50%, 0%)
+
+  .page-mark-login
+    font-size: 24px
+    width: calc(100% - 0px)
+
+  .line-page-form
+    margin: 0
+    width: calc(60% - 0px)
+    transform: translate(35%, 450%)
+
+  .welcome-login
+    font-size: 1.5rem
+
+  .title-login
+    font-size: 1.1rem
+
+  .message-login-error
+    font-size: 1rem
+    width: 100%
+    max-width: 80%
+    padding: 5px
+
+  .container-body-login
+    padding: 0 40px 20px 40px
+
+  .login-text
+    font-size: 1.1rem
+
+  .login-icon
+    font-size: 35px !important
+
+  .form-input
+    width: 100%
+    padding: 8.5px
+    font-size: 1rem
+
+  .btn-form
+    font-size: 1.1rem
+    padding: 8px
+
+  .footer-form
+    margin-top: 15px
+    font-size: 1rem
+
+  /*register
+
+  .title-register
+    font-size: 1.8rem
+
+  .welcome-register
+    font-size: 1.4rem
+
+  .form-label-register
+    font-size: 1.2rem
+
+  .form-input-register
+    font-size: 1.1rem
+    padding: 6px
+
+  /*Crear Colección
+
+  .container-CRTCollection
+    height: auto
+
+  .title-CRTCollection
+    font-size: 1rem
+
+  .header-CRTCollection
+    font-size: 1rem !important
+
+  .error-message-CRTCollection, #alternateError
+    font-size: 0.8rem
+
+  .form-CRTCollection
+    max-width: 100%
+    height: auto
+
+  .text-CRTCollection
+    font-size: 1rem
+    width: 90%
+
+  .container-img-CRTCollection
+    width: 85px
+    height: 85px
+
+  .btn-CRTCollection
+    width: 80%
+    border-radius: 6px
+    font-size: 1rem
+    padding: 5px
+    margin-top: 10px
+
+  .row-form-CRTCollection
+    display: flex
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    width: 90%
+
+  .label-CRTCollection
+    font-size: 1rem
+    margin-bottom: 5px
+
+  .form-input-CRTCollection
+    font-size: 0.8rem
+    padding: 3.5px
+
+  .btn-form-CRTCollection
+    font-size: 1rem
+    width: 80%
+    margin-bottom: 10px
+
+  /* parte para agregar Colección
+
+  .container-other-addCollection
+    font-size: 0.9rem !important
+    margin: auto
+
+  .expand-other-addCollection
+    width: 80%
+    margin: auto
+
+  .container-img-imgAddCollection
+    width: 100px
+    height: 120px
+
+  .form-textarea-CRTCollection
+    font-size: 0.9rem
+    margin-right: auto
+
+  /*Ver colección
+
+  .card-title
+    font-size: 1.1rem
+
+  .card-container
+    margin-top: 20px
+    display: grid
+    gap: 25px
+    background: none
+
+  .card-content
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 150px
+    height: auto
+    background-color: rgba(227, 226, 226, 0.666)
+    border-radius: 15px
+
+  .card-img
+    width: 80px
+    height: 80px
+    margin: 20px auto 20px auto
+
+  .row-card-left
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  .title-card
+    text-align: center
+    font-size: 1rem
+    margin: 0 6px 0 6px
+
+  .text-card
+    font-size: 1rem
+
+  .card-container-btn .card-icon
+    font-size: 25px !important
+    margin-top: 5px
+
+/*responsive para Tabletas
+@media only screen and (min-width: 768px) and (max-width: 1024px)
+  /*index
+
+  .row-container-welcome
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+  .container-left, .container-right
+    width: 100%
+    height: auto
+    display: flex
+    margin: 0 0 65px 0
+
+  /*Ver colección
+
+  .card-container
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 10px
+    column-gap: 7px
+    margin: 0
+    background: none
+
+  .card-content
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    height: auto
+    background-color: rgba(227, 226, 226, 0.666)
+    border-radius: 15px
+
+  .card-img
+    width: 120px
+    height: 120px
+    margin: 20px auto 20px auto
+
+  .row-card-left
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  .title-card
+    text-align: center
+    margin: 0 5px 0 5px
+
+  .card-container-btn .card-icon
+    font-size: 32px !important
+    margin-top: 5px

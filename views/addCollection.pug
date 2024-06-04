@@ -9,43 +9,48 @@ block content
         if errorMessage
             p.error-message-CRTCollection #{errorMessage}
         else 
-            p.error-message-CRTCollection *Se puede subir imagenes con el formato jpeg, jpg y png.
-            p.error-message-CRTCollection ¡La imagen es obligatorio!, si no se selecciona, no se enviara los datos 
-        form(class='form-CRTCollection' action='/add-collection' method='POST' enctype='multipart/form-data')
+            p.error-message-CRTCollection *Se puede subir imagenes con el formato jpeg, jpg, png y webp.
+            p.error-message-CRTCollection ¡La imagen es obligatorio!, si no se selecciona, no se enviara los datos
+        #alternateError
+        form(id='uploadForm' class='form-CRTCollection' action='/add-Collection' method='POST' enctype='multipart/form-data')
             .container-form-coverCRTCollection
                 p.text-CRTCollection Imagen representativa de la colección
-                img.container-img-CRTCollection(src='/icono-camara-gris.png', alt='' id='img-CRTCollection')
-                input(accept='image/*' type='file' name='imageCRTCollection' id='imageCRTCollection' class='input-img-CRTCollection', required)
-                label(for='imageCRTCollection' class='btn-CRTCollection') Seleccionar imagen
+                img.container-img-imgAddCollection(src='/icono-camara-gris.png', alt='' id='img-CRTCollection')
+                input(accept='.jpg, .jpeg, .png, .webp' type='file' name='imgAddCollection' id='imgAddCollection' class='input-img-CRTCollection')
+                label(for='imgAddCollection' class='btn-CRTCollection') Seleccionar imagen
+                input(type='hidden' name='categoryId' value=categoryId)
                 .row-form-CRTCollection
-                    label(for='categoryCollection' class='label-CRTCollection') Nombre de la colección
-                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...' autofocus, required)
+                    label(for='nameCollection' class='label-CRTCollection') Nombre para la colección
+                    input(type='text' name='nameCollection' id='nameCollection' class='form-input-CRTCollection' placeholder='La chica de miller, etc...' autofocus, required)
                 .row-form-CRTCollection
-                    label(for='categoryCollection' class='label-CRTCollection') Creador de la colección
-                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...', required)
+                    label(for='collectionCreator' class='label-CRTCollection') Creador de la colección
+                    input(type='text' name='collectionCreator' id='collectionCreator' class='form-input-CRTCollection' placeholder='autor, vendedor, etc...', required)
                 .row-form-CRTCollection
-                    label(for='categoryCollection' class='label-CRTCollection') Patrocinador de la colección
-                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...', required)
+                    label(for='collectionSponsor' class='label-CRTCollection') Patrocinador de la colección
+                    input(type='text' name='collectionSponsor' id='collectionSponsor' class='form-input-CRTCollection' placeholder='Pixar, Nike, EA, etc...', required)
+                .row-form-CRTCollection
+                    label(for='installment' class='label-CRTCollection') Entrega de la colección 
+                    input(type='text' name='installment' id='installment' class='form-input-CRTCollection' placeholder='Edicion 1, temp.1, etc...', required)
                 .container-other-addCollection
                     p.other-addCollection Datos opcionales
                     i.material-symbols-outlined unfold_more
 
                 .expand-other-addCollection
                     .row-form-CRTCollection
-                        label(for='categoryCollection' class='label-CRTCollection') Fecha de publicación de la colección
-                        input(type='date' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...')
+                        label(for='publicationDate' class='label-CRTCollection') Fecha de publicación de la colección
+                        input(type='date' name='publicationDate' id='publicationDate' class='form-input-CRTCollection')
                     .row-form-CRTCollection
-                        label(for='categoryCollection' class='label-CRTCollection') Género de la colección
-                        input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...')
+                        label(for='Genre' class='label-CRTCollection') Género de la colección
+                        input(type='text' name='Genre' id='Genre' class='form-input-CRTCollection' placeholder='Comedia, terror, etc...')
                     .row-form-CRTCollection
-                        label(for='categoryCollection' class='label-CRTCollection') Descripción adicional de la colección
-                    textarea(type='text' name='categoryCollection' id='categoryCollection' class='form-textarea-CRTCollection' placeholder='Películas, Libros, etc...' rows='4')
+                        label(for='descriptionCollection' class='label-CRTCollection') Descripción adicional de la colección
+                    textarea(type='text' name='descriptionCollection' id='descriptionCollection' class='form-textarea-CRTCollection' rows='2' placeholder='sinopsis, Reseña, etc...')
                 button(type='submit' class='btn-form-CRTCollection') Añadir Elemento
 
     script.
         //script para mostrar imagenes cargadas por el file a la vista de la página
         const defaultFile = '/icono-camara-gris.png'; //Constante que atrae la imagen por defecto
-        const fileImg = document.getElementById('imageCRTCollection');//Constante para el input que carga o sube la imagen
+        const fileImg = document.getElementById('imgAddCollection');//Constante para el input que carga o sube la imagen
         const img = document.getElementById('img-CRTCollection'); //constante donde se va a remplazara la imagen por defecto y visualizar la nueva imagen cargada
 
         //Evento que obtiene los parametros de la imagen para aplicar la visualización y cambio de imagen
@@ -79,5 +84,28 @@ block content
                         expandOther.classList.remove('closing');
                     }, 0); //Estimar el tiempo de respuesta para la animación de cierre
                 }, 0); //Espera 0 milisegundos antes de establecer la altura máxima en 0, es decir para que se cierre
+            }
+        });
+
+        /*Función que valida la subida de imagenes en relacion a su tamaño permitido y muestra un mensaje de error a la vista*/
+        document.getElementById('uploadForm').addEventListener('submit', function(event) { //Obtiene el id del form y verifica el botón de type = 'submit'
+            event.preventDefault();
+
+            const imgAddCollection = document.getElementById('imgAddCollection');
+            const file = imgAddCollection.files[0];
+            const maxSize = 1 * 1024 * 1024; //Se selecciona el tamaño permitido en 1MB
+
+            if (file) {
+                //Muestra un mensaje de error si el tamaño permitido es mayor a 1MB
+                if (file.size > maxSize) {
+                    document.getElementById('alternateError').innerText = 'El archivo excede el límite permitido de 1 MB.';
+                } else {
+                    document.getElementById('alternateError').innerText = '';
+                    // Proceder con la carga del archivo
+                    event.target.submit(); // Enviar el formulario si el archivo es válido
+                }
+            } else {
+                //Muestra un mensaje al usuario en caso de que no se seleccione una imagen 
+                document.getElementById('alternateError').innerText = 'Por favor, seleccione una imagen.';
             }
         });

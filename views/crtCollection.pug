@@ -11,15 +11,21 @@ block content
             p.error-message-CRTCollection #{errorMessage}
         else 
             p.error-message-CRTCollection *Solo se puede subir imagenes con el formato png
-        form(class='form-CRTCollection' action='/create-crtCollection' method='POST' enctype='multipart/form-data')
+            p.error-message-CRTCollection ¡La imagen es obligatorio!, si no se selecciona, no se enviara los datos 
+        #alternateError
+        form(id='uploadForm' class='form-CRTCollection' action='/create-crtCollection' method='POST' enctype='multipart/form-data')
             .container-form-coverCRTCollection
                 p.text-CRTCollection Imagen representativa de la colección
                 img.container-img-CRTCollection(src='/icono-camara-gris.png', alt='' id='img-CRTCollection')
                 input(accept='image/png' type='file' name='imageCRTCollection' id='imageCRTCollection' class='input-img-CRTCollection')
                 label(for='imageCRTCollection' class='btn-CRTCollection') Seleccionar imagen
                 .row-form-CRTCollection
-                    label(for='categoryCollection' class='label-CRTCollection') Categoría de la colección:
-                    input(type='text' name='categoryCollection' id='categoryCollection' class='form-input-CRTCollection' placeholder='Películas, Libros, etc...' autofocus, required)
+                    label(for='categoryId' class='label-CRTCollection') Elije una Categoría para la colección:
+                    select(type='text' name='categoryId' id='categoryId' class='form-input-CRTCollection')
+                        option(value='0') -- Sin seleccionar --
+                        option(value='1') 1. Películas
+                        option(value='2') 2. Libros
+                        option(value='3') 3. VideoJuegos
                 button(type='submit' class='btn-form-CRTCollection') Añadir nueva colección
 
     script.
@@ -37,5 +43,28 @@ block content
                 reader.readAsDataURL(e.target.files[0])
             }else{
                 img.src = defaultFile;//Si no se lecciona una imagen al abrir el input type='file', carga la imagen por defecto 
+            }
+        });
+
+        /*Función que valida la subida de imagenes en relacion a su tamaño permitido y muestra un mensaje de error a la vista*/
+        document.getElementById('uploadForm').addEventListener('submit', function(event) { //Obtiene el id del form y verifica el botón de type = 'submit'
+            event.preventDefault();
+
+            const imageCRTCollection = document.getElementById('imageCRTCollection');
+            const file = imageCRTCollection.files[0];
+            const maxSize = 1 * 1024 * 1024; //Se selecciona el tamaño permitido en 1MB
+
+            if (file) {
+                //Muestra un mensaje de error si el tamaño permitido es mayor a 1MB
+                if (file.size > maxSize) {
+                    document.getElementById('alternateError').innerText = 'El archivo excede el límite permitido de 1 MB.';
+                } else {
+                    document.getElementById('alternateError').innerText = '';
+                    // Proceder con la carga del archivo
+                    event.target.submit(); // Enviar el formulario si el archivo es válido
+                }
+            } else {
+                //Muestra un mensaje al usuario en caso de que no se seleccione una imagen 
+                document.getElementById('alternateError').innerText = 'Por favor, seleccione una imagen.';
             }
         });
