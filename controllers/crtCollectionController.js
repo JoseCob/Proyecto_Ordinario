@@ -42,11 +42,11 @@ async function crtCollection(req, res) {
         });
     }
 
-    //Verifica si hay un archivo adjunto en la solicitud y si el tamaño del archivo es mayor a 1MB
+    //Verifica si hay un archivo adjunto en la solicitud y si el tamaño del archivo es mayor a 1M
     if (req.file && req.file.size > 1 * 1024 * 1024) {
         return res.render('crtCollection', {
             title: 'Crear Colección',
-            errorMessage: 'El archivo excede el límite permitido de 1 MB.',
+            errorMessage: 'El archivo excede el límite permitido de 1M.',
             firstName: req.session.user.firstName,
             firstSurname: req.session.user.firstSurname
         });
@@ -70,7 +70,7 @@ async function crtCollection(req, res) {
                 if (compressedImage.length > 64 * 1024 * 1024) {
                     return res.render('crtCollection', {
                         title: 'Crear Colección',
-                        errorMessage: 'El archivo comprimido excede el límite permitido de 64MB por parte del servidor.',
+                        errorMessage: 'El archivo comprimido excede el límite permitido de 64M por parte del servidor.',
                         firstName: req.session.user.firstName,
                         firstSurname: req.session.user.firstSurname
                     });
@@ -129,10 +129,10 @@ async function crtCollection(req, res) {
     } catch (error) {
         //Muestra un mensaje a la vista del usuario y lo retorna en consola si el servidor detecta el valor máximo permitido en archivos, en este caso en imágenes
         if (error.code === 'ER_NET_PACKET_TOO_LARGE') {
-            console.error('Error: El archivo comprimido excede el límite permitido de 64MB por parte del servidor.');
+            console.error('Error: El archivo comprimido excede el límite permitido de 64M por parte del servidor.');
             return res.status(500).render('crtCollection', {
                 title: 'Crear Colección',
-                errorMessage: 'El archivo comprimido excede el límite permitido de 64MB por parte del servidor.',
+                errorMessage: 'El archivo comprimido excede el límite permitido de 64M por parte del servidor.',
                 firstName: req.session.user.firstName,
                 firstSurname: req.session.user.firstSurname
             });

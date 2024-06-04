@@ -52,12 +52,12 @@ block content
 
             const imageCRTCollection = document.getElementById('imageCRTCollection');
             const file = imageCRTCollection.files[0];
-            const maxSize = 1 * 1024 * 1024; //Se selecciona el tamaño permitido en 1MB
+            const maxSize = 1 * 1024 * 1024; //Se selecciona el tamaño permitido en 1M
 
             if (file) {
-                //Muestra un mensaje de error si el tamaño permitido es mayor a 1MB
+                //Muestra un mensaje de error si el tamaño permitido es mayor a 1M
                 if (file.size > maxSize) {
-                    document.getElementById('alternateError').innerText = 'El archivo excede el límite permitido de 1 MB.';
+                    document.getElementById('alternateError').innerText = 'El archivo excede el límite permitido de 1M.';
                 } else {
                     document.getElementById('alternateError').innerText = '';
                     // Proceder con la carga del archivo

@@ -7,7 +7,7 @@ const storage = multer.memoryStorage();
 //Funcion que genera la subida de imagenes en formato png con la ayuda del multer
 const upload = multer({
     storage: storage, //Se declara el almacenamiento en memoria (buffer)
-    limits: { fileSize: 1 * 1024 * 1024 }, //Limita a 1MB permitido al guardar y renderizar las imagenes
+    limits: { fileSize: 1 * 1024 * 1024 }, //Limita a 1M permitido al guardar y renderizar las imagenes
     //Función que genere el filtro para cargar archivos
     fileFilter: function (req, file, cb) { /*Función que contgiene la solicitud HTTP, el objeto de archivo y 
     la función que genera una llamada para indicar si se debe aceptar o rechazar el archivo.*/
@@ -34,8 +34,8 @@ module.exports = function (req, res, next) {
         if (err) {
             //Si el mensaje de error genérico del multer es igual a 'File too large', remplaza el mensaje de error por uno personalizado
             if (err instanceof multer.MulterError && err.message === 'File too large') {
-                err.message = 'La imagen sobrepasó el tamaño permitido de 1MB';
-                console.log('La imagen no se guardo porque excedió el límite de 1MB');
+                err.message = 'La imagen sobrepasó el tamaño permitido de 1M';
+                console.log('La imagen no se guardo porque excedió el límite de 1M');
             }
             //Si el mensaje del error en la vista coincide, muestra un mensaje personalizado en consola
             if (err.message === '¡Solo se permite subir imágenes con formato PNG!') {

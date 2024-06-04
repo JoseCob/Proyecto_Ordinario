@@ -2,4 +2,45 @@ extends header
 
 block content
     h1 #{title}
-    p Hola Vista 4
+        .Container-search
+            form(action='/Search-Collection', method='GET' class='search-bar')
+                input(type='text', name='search', placeholder='Buscar Colección...')
+                button(type='submit')
+                    i(class='material-symbols-outlined') search
+        .Container-table
+            if collections && collections.length
+                each collection in collections
+                    table
+                        thead
+                            tr
+                                th Imagen
+                                th Titulo
+                                th Creador
+                                th Patrocinador
+                                th Entrega
+                                th Fecha
+                                th Género
+                                th Descripción
+                        tbody
+                            tr
+                                td
+                                    if collection.imgAddCollection
+                                        img.card-img-table(src=`data:image/*;base64,${collection.imgAddCollection.toString('base64')}` alt=collection.nameCollection)
+                                    else
+                                        Img(class='card-img-table' src='/icono-camara-gris.png' alt='' id='imageCRTCollection')
+                                td
+                                    span #{collection.nameCollection}
+                                td 
+                                    span #{collection.collectionCreator}
+                                td
+                                    span #{collection.collectionSponsor}
+                                td
+                                    span #{collection.installment}
+                                td
+                                    span #{collection.registerDateFormatted}
+                                td
+                                    span #{collection.Genre}
+                                td
+                                    span #{collection.descriptionCollection}
+            else 
+                p No se encontraron colecciones.

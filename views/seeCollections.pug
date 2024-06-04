@@ -1,7 +1,7 @@
 extends header 
 
 block content
-    h1.card-title #{title}
+    h1 #{title}
     .card-container
         if collections && collections.length
             each collection in collections
@@ -19,9 +19,9 @@ block content
                         .card-container-btn
                             a(href=`/addCollection?categoryId=${collection.categoryId}` class='btn-add')
                                 i.card-icon.material-symbols-outlined add_box
-                            a(href='#' class='btn-visibility')
+                            a(href=`/lookCollection?categoryId=${collection.categoryId}` class='btn-visibility')
                                 i.card-icon.material-symbols-outlined visibility
                             a(href='#' class='btn-delete')
                                 i.card-icon.material-symbols-outlined delete
         else
-            p No se encontraron colecciones.
+            p No se encontraron categorías.

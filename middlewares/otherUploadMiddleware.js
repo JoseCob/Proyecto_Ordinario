@@ -7,7 +7,7 @@ const storage = multer.memoryStorage();
 //Funcion que genera la subida de imagenes en formato png con la ayuda del multer
 const upload = multer({
     storage: storage, //Se declara el almacenamiento en memoria (buffer)
-    limits: { fileSize: 1 * 1024 * 1024 }, //Limita a 1MB permitido al guardar y renderizar las imagenes
+    limits: { fileSize: 1 * 1024 * 1024 }, //Limita a 1M permitido, al guardar y renderizar las imagenes con un nuevo tamaño al servidor
     //Función que genere el filtro para cargar archivos
     fileFilter: function (req, file, cb) { /*Función que contgiene la solicitud HTTP, el objeto de archivo y 
     la función que genera una llamada para indicar si se debe aceptar o rechazar el archivo.*/
@@ -21,7 +21,7 @@ const upload = multer({
         if (mimetype && extname) {
             return cb(null, true); //guarda la imagen
 
-            //De lo contrario genera un mnesaje de error si no es el formato de la imagen permitido
+            //De lo contrario genera un mensaje de error si no es el formato de la imagen permitido
         } else {
             console.log('¡La imagen:', file.originalname, 'no se pudo guardar en la base de datos!');
             return cb(new Error('¡Solo se permite subir imágenes con formato jpeg, jpg, png, webp!'));
@@ -31,12 +31,12 @@ const upload = multer({
 
 module.exports = function (req, res, next) {
     //Exporta la funcion del multer con mensajes de error y mostrarlo en la vista 'addCollection.pug'
-    upload(req, res, function (err) {
+    upload(req, res, function (err, categoryId) {
         if (err) {
             //Si el mensaje de error genérico del multer es igual a 'File too large', remplaza el mensaje de error por uno personalizado
             if (err instanceof multer.MulterError && err.message === 'File too large') {
-                err.message = 'La imagen sobrepasó el tamaño permitido de 1MB';
-                console.log('La imagen no se guardo porque excedió el límite de 1MB');
+                err.message = 'La imagen sobrepasó el tamaño permitido de 1M';
+                console.log('La imagen no se guardo porque excedió el límite de 1M');
             }
             //Si el mensaje del error en la vista coincide, muestra un mensaje personalizado en consola
             if (err.message === '¡Solo se permite subir imágenes con formato jpeg, jpg, png, webp!') {
@@ -50,7 +50,9 @@ module.exports = function (req, res, next) {
                 firstName: req.session.user.firstName,
                 firstSurname: req.session.user.firstSurname
             });
+        } else {
+            req.session.categoryId = categoryId; // Asignar categoryId a la sesión
+            next();
         }
-        next();
     });
 };

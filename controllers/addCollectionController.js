@@ -11,13 +11,26 @@ function generateImagehash(imageBuffer) {
     return hash.digest('hex'); //Finaliza el proceso de hashing y devuelve el hash como resultado en formato hexadecimal
 }
 
-//Función que crea la colección mediante la solicitud y respuesta HTTP = 'req.body'
+//Función que crea la colección mediante la solicitud y respuesta HTTP al objeto = 'req.body'
 async function createAddCollection(req, res) {
-    //Constante que obtiene el id de la categoría, para registrale colecciones.
+    //Constante para las propiedades del formulario 'addCollection.pug'
     const {nameCollection, collectionCreator, collectionSponsor, installment, publicationDate, Genre, descriptionCollection } = req.body;
-    //Constante que obtiene el nombre del usuario que realiza la solicitud
-    const userName = req.session.user.userName;
-    const categoryId = req.body.categoryId;
+    //Si la fecha de publicación está vacía, asigna null
+    let newPublicationDate = publicationDate;
+    if (!publicationDate) {
+        newPublicationDate = null;
+    }
+    //Si la Descripción y el género de la colección es vacia, añade por defecto 'S/E' = sin especificar
+    let newDescription = descriptionCollection;
+    if (!descriptionCollection) {
+      newDescription = 'S/E';
+    }
+    let newGenre = Genre;
+    if (!Genre) {
+      newGenre = 'S/E';
+    }
+    const userName = req.session.user.userName; //Constante que obtiene el nombre del usuario que realiza la solicitud
+    const categoryId = req.body.categoryId; //Constante que obtiene el id de la categoria en la url
     //Variable que se utilizará para almacenar la imagen y el identificador de imagen de la colección al comprimirse, puede ser nulo o vacío la propiedad
     let imgAddCollection = null;
     let imageIdentifier = null;
@@ -26,19 +39,19 @@ async function createAddCollection(req, res) {
     if (req.fileValidationError) {
         //Si existe un error, se renderiza la plantilla addCollection.pug con un mensaje de error.
         return res.render('addCollection', {
-            title: 'Agregar Nuevo Elemento a la Colección', // Título de la vista
-            errorMessage: req.fileValidationError, // Mensaje de error
-            categoryId: req.query.categoryId,
-            firstName: req.session.user.firstName, // Devuelve el Nombre de pila del usuario
-            firstSurname: req.session.user.firstSurname // Devuelve el primer Apellido del usuario
+            title: 'Agregar Nuevo Elemento a la Colección', //Título de la vista
+            errorMessage: req.fileValidationError, //Mensaje de error
+            categoryId: req.query.categoryId, //Constante que obtiene el id de la categoria en la consulta del model
+            firstName: req.session.user.firstName, //Devuelve el Nombre de pila del usuario
+            firstSurname: req.session.user.firstSurname //Devuelve el primer Apellido del usuario
         });
     }
 
-    //Verifica si hay un archivo adjunto en la solicitud y si el tamaño del archivo es mayor a 1MB
+    //Verifica si hay un archivo adjunto en la solicitud y si el tamaño del archivo es mayor a 1M
     if (req.file && req.file.size > 1 * 1024 * 1024) {
         return res.render('addCollection', {
             title: 'Agregar Nuevo Elemento a la Colección',
-            errorMessage: 'El archivo excede el límite permitido de 1MB.',
+            errorMessage: 'El archivo excede el límite permitido de 1M.',
             categoryId: req.query.categoryId,
             firstName: req.session.user.firstName,
             firstSurname: req.session.user.firstSurname
@@ -63,7 +76,7 @@ async function createAddCollection(req, res) {
                 if (compressedImage.length > 64 * 1024 * 1024) {
                     return res.render('addCollection', {
                         title: 'Agregar Nuevo Elemento a la Colección',
-                        errorMessage: 'El archivo comprimido excede el límite permitido de 64MB por parte del servidor.',
+                        errorMessage: 'El archivo comprimido excede el límite permitido de 64M por parte del servidor.',
                         categoryId: req.query.categoryId,
                         firstName: req.session.user.firstName,
                         firstSurname: req.session.user.firstSurname
@@ -89,10 +102,18 @@ async function createAddCollection(req, res) {
     }
     
     try {
+        req.session.categoryId = categoryId;
         //Insertar la colección en la base de datos
-        await newCollection.addCollection(userName, categoryId, nameCollection, collectionCreator, collectionSponsor, installment, imgAddCollection, imageIdentifier, publicationDate, Genre, descriptionCollection);
-        res.redirect('/lookCollection');
-        console.log('La colección y la imagen:', imgAddCollection, 'se guardó en la base de datos, ¡Satisfactoriamente!');
+        await newCollection.addCollection(userName, categoryId, nameCollection, collectionCreator, collectionSponsor, installment, imgAddCollection, imageIdentifier, newPublicationDate, newGenre, newDescription);
+        res.render('addCollection', {
+        title: 'Agregar Nuevo Elemento a la Colección',
+        categoryId: req.session.categoryId,
+        errorMessage: 'Se creo la colección exitosamente.',
+        firstName: req.session.user.firstName,
+        firstSurname: req.session.user.firstSurname
+    });
+        delete req.session.errorMessage;
+        console.log('La colección', categoryId, 'y la imagen:', imgAddCollection, 'se guardó en la base de datos, ¡Satisfactoriamente!');
         if (imageIdentifier) {
             console.log('hash de la imagen generado:', imageIdentifier);
         } else {
@@ -101,11 +122,11 @@ async function createAddCollection(req, res) {
     } catch (error) {
         //Muestra un mensaje a la vista del usuario y lo retorna en consola si el servidor detecta el valor máximo permitido en archivos, en este caso en imágenes
         if (error.code === 'ER_NET_PACKET_TOO_LARGE') {
-            console.error('Error: El archivo comprimido excede el límite permitido de 64MB por parte del servidor.');
+            console.error('Error: El archivo comprimido excede el límite permitido de 64M por parte del servidor.');
             return res.status(500).render('addCollection', {
                 title: 'Agregar Nuevo Elemento a la Colección',
-                errorMessage: 'El archivo comprimido excede el límite permitido de 64MB por parte del servidor.',
-                categoryId: req.query.categoryId,
+                errorMessage: 'El archivo comprimido excede el límite permitido de 64M por parte del servidor.',
+                categoryId: req.session.categoryId,
                 firstName: req.session.user.firstName,
                 firstSurname: req.session.user.firstSurname
             });
@@ -115,13 +136,52 @@ async function createAddCollection(req, res) {
         res.status(500).render('addCollection', {
             title: 'Agregar Nuevo Elemento a la Colección', //Título de la vista
             errorMessage: 'Error al crear la colección.', //Mensaje de error
-            categoryId: req.query.categoryId,
+            categoryId: categoryId, //Devuelve el Id del modelo en caso de algun error inesperado en la pagina
             firstName: req.session.user.firstName, //Devuelve el Nombre de pila del usuario
             firstSurname: req.session.user.firstSurname //Devuelve el Primer Apellido del usuario
         });
     }
 }
 
+//Funcion para darle formato a la fecha como 'día/mes/año' al publicationDate de la base de datos
+function formatDate(date) {
+    const d = new Date(date); //Constante para obtener el día, mes y año
+    const day = String(d.getDate()).padStart(2, '0');//constante para obtener el día
+    const month = String(d.getMonth() + 1).padStart(2, '0'); //constante para obtener el mes
+    const year = d.getFullYear(); //Constante que obtiene el año
+    return `${day}/${month}/${year}`; //Devuelve el valor del formato como 'día/mes/año'
+}
+
+//Función que obtiene y muestra las colecciones de su respectiva categoria
+//Función que obtiene y muestra las colecciones de un usuario
+async function lookCollection(req, res) {
+    const userName = req.session.user.userName; //Obtiene el nombre del usuario desde la sesión
+    try {
+        const collections = await newCollection.getCollectionBycategory(userName) || []; //Obtiene las colecciones del usuario y verifica que no sea nulo
+        collections.forEach(collection => {
+            /*Devuelve el formato de la fecha como 'día/mes/año' en la busqueda del dato registerDate desde 'lookCollection.pug'*/
+            collection.registerDateFormatted = formatDate(collection.publicationDate); //Formatea la fecha
+        });
+        //Renderiza la visa 'lookCollection.pug' con los datos del usuario en sesión y su lista de colecciones
+        res.render('lookCollection', {
+            title: 'catálogo de la Colección',
+            collections: collections,
+            firstName: req.session.user.firstName,
+            firstSurname: req.session.user.firstSurname
+        });
+    } catch (error) {
+        console.error('Error al obtener las colecciones:', error);
+        //Muestra la lista vacía en caso de haber un error al obtener las colecciones
+        res.status(500).render('lookCollection', {
+            title: 'catálogo de la Colección',
+            collections: [], // Asegura que se pasa un array vacío en caso de algún error
+            firstName: req.session.user.firstName,
+            firstSurname: req.session.user.firstSurname
+        });
+    }
+}
+
 module.exports = {
-    createAddCollection
+    createAddCollection,
+    lookCollection
 };
