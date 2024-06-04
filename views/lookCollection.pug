@@ -3,7 +3,7 @@ extends header
 block content
     h1 #{title}
         .Container-search
-            form(action='/Search-Collection', method='GET' class='search-bar')
+            form(action='/search-Collection', method='GET' class='search-bar')
                 input(type='text', name='search', placeholder='Buscar Colección...')
                 button(type='submit')
                     i(class='material-symbols-outlined') search

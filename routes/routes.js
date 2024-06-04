@@ -19,6 +19,7 @@ const crtCollection = require('./crtCollection'); //Llama a la vista de Crear Co
 const seeCollections = require('./seeCollections'); //Llama a la vista de ver Colecciones(seeCollections.js)
 const addCollection = require('./addCollection'); //Llama a la vista de agregar Colección(addCollection.js)
 const lookCollection = require('./lookCollection') //Llama a la vista de mirar Colección(lookCollection.js)
+const searchCollection = require('./searchCollection');
 
 //Rutas de autenticación (no protegidas) antes de iniciar sesión
 router.use('/login', login); //Usa el archivo login.js mediante el parámetro '/login' con la variable login para mostrar el resultado de la vista al usuario
@@ -35,6 +36,8 @@ router.use('/crtCollection', crtCollection); //Usa el archivo crtCollection.js m
 router.use('/seeCollections', seeCollections); //Usa el archivo seeCollections.js
 router.use('/addCollection', addCollection); //Usa el archivo addCollection.js
 router.use('/lookCollection', lookCollection); //Usa el archivo lookCollection.js
+router.use('/search-Collection', searchCollection);//Usa el archivo searchCollection.js
+
 
 /*-- Rutas POST --*/
 /*Llama al controlador='crtCollectionController' para crear nuevas colecciones con el authMiddleware, la función uploadMiddleware 

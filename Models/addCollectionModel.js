@@ -54,7 +54,18 @@ async function getCollectionBycategory(userName) {
     }
 }
 
+async function getAllCollections() {
+    try {
+        const [rows] = await db.query('SELECT * FROM addcollection');
+        return rows;
+    } catch (error) {
+        console.error('Error al consulta las colecciones:', error);
+        throw error;
+    }
+}
+
 module.exports = {
     addCollection,
-    getCollectionBycategory
+    getCollectionBycategory,
+    getAllCollections
 };
