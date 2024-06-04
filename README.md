@@ -27,6 +27,10 @@ Para usar todas estas dependencias en nuestro dispositivo, ejecute en la termina
 - _`npm install`_
 > Este proceso asegura que todas las dependencias necesarias para ejecutar este proyecto se instalen correctamente en el nuevo entorno de trabajo con las versiones utilizadas en el package.json.
 
+### Ejemplo de la consola VS Code
+![Ejemplo_install_npm](https://github.com/JoseCob/Proyecto_Ordinario/assets/157552935/77ddbac8-8560-4b96-9189-766d897d6362)
+
+
 ### *INSTALACIÓN MANUAL
 Para hacer la instalación de cada una de las dependencias ejecute lo siguiente en la terminal, una vez estando ubicado en la ruta del proyecto y habiendo instalado el package.json:
 - _`npm install (dependencia) -E`_
@@ -102,4 +106,5 @@ escribe lo siguiente en consola estando en la ruta del proyecto:
 ![Ejemplo_terminal](https://github.com/JoseCob/Proyecto_Ordinario/assets/157552935/81df6e7d-0f2f-4ce8-a77e-5ec52f2db293)
 
 ### Imagen de las dependencias en el package.json
-![image](https://github.com/JoseCob/Proyecto_Ordinario/assets/157552935/e734d75d-104a-4889-99f6-3dbb917a26a0)
+![image](https://github.com/JoseCob/Proyecto_Ordinario/assets/157552935/84eaa0ef-7aca-4d37-93da-17755e8a5a12)
+
