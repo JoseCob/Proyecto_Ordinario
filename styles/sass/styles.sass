@@ -345,7 +345,7 @@ i
   background-color: white
 
 .container-body-login
-  padding: 0 80px 40px 80px
+  padding: 0 80px 20px 80px
 
 .login-text
   color: white
@@ -361,15 +361,17 @@ i
   border: 1px solid #1951d3
 
 .login-icon
+  color: black
   user-select: none
   margin-top: 0
   font-size: 50px !important
-  background-color: rgb(202, 198, 198)
+  background-color: white
 
 .form-input
   width: 100%
   padding: 13.5px
   font-size: 20px
+  background-color: hsl(0deg 1.11% 95.37%)
   border: 1px solid #1951d3
   border-left: none
 
@@ -377,6 +379,27 @@ i
 
 \::-ms-reveal
   display: none
+
+/*Clase para mostrar la contraseña
+
+\.viewPassword
+  display: flex
+  justify-content: end
+  align-items: end
+  margin-top: -12px
+  margin-bottom: 15px
+
+#viewPassword
+  background-color: white
+  border-radius: 18px
+  border: none
+  cursor: pointer
+
+.icon-viewPassword
+  vertical-align: middle
+  font-size: 35px !important
+  color: black
+
 
 input
   &:hover, &:focus, &:active, &:focus-visible
@@ -891,7 +914,10 @@ tbody tr:nth-child(even)
     width: 100%
     padding: 8.5px
     font-size: 1rem
-
+  
+  .icon-viewPassword
+    font-size: 28px !important
+  
   .btn-form
     font-size: 1.1rem
     padding: 8px

@@ -32,6 +32,10 @@ html
                     .input-icon-loginRow
                         i.material-symbols-outlined(class='login-icon') vpn_key
                         input(type='password' name='password' id='password' class='form-input' placeholder='Agregar contraseña' autocomplete='off')
+
+                    .viewPassword
+                        button(type='button' id='viewPassword')
+                            i.material-symbols-outlined(class='icon-viewPassword') visibility_off
                     
                     button(type='submit' class='btn-form') Iniciar Sesión
                 hr.line-page-form
@@ -39,3 +43,16 @@ html
                     p.text-content ¿No tienes cuenta?
                     a(href='/register' class='suggesting-link') Registrarse
                     p(class='suggesting-link-text') aqui
+        script.
+            const passwordInput = document.getElementById('password');
+            const mostrarContrasenaBtn = document.getElementById('viewPassword');
+
+            mostrarContrasenaBtn.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    mostrarContrasenaBtn.innerHTML = '<i class="material-symbols-outlined icon-viewPassword">visibility</i>';
+                } else {
+                    passwordInput.type = 'password';
+                    mostrarContrasenaBtn.innerHTML = '<i class="material-symbols-outlined icon-viewPassword">visibility_off</i>';
+                }
+            });
